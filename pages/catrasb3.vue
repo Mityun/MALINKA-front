@@ -18,7 +18,7 @@
         <img src="@/assets/Ellipse21.svg" width="100%" alt="" class="pic1" />
         <div class="flex justify-center">
             <div class="w-5/6 justify-center items-center mt-6">
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-4 gap-4">
                     <div
                         v-for="item in arrar"
                         :key="item.id"
@@ -37,13 +37,20 @@
                                     v-if="item.discount != 0"
                                     class="text-xs text-[#D2D2D2] line-through"
                                 >
-                                    {{ item.priceC }} ₽
-                                </div>
-                                <div class="text-2xl text-black">
                                     {{ item.price }} ₽
                                 </div>
                                 <div class="text-2xl text-black">
                                     {{ item.name }}
+                                </div>
+
+                                <div v-if="item.discount == 0" class="text-2xl text-black">
+                                    <b>{{ item.priceDiscounted }}</b
+                                    >₽
+                                </div>
+                                <div
+                                    v-else
+                                    class="text-2xl text-black">
+                                    {{ item.priceDiscounted }} ₽
                                 </div>
                             </div>
                             <div
@@ -89,7 +96,7 @@
 <script>
 import Under from "@/components/Under.vue";
 import Navbar from "@/components/Navbar.vue";
-import raspData from "@/components/raspData.js";
+
 
 export default {
     components: {
@@ -103,22 +110,23 @@ export default {
     },
     methods: {
         fetchProducts() {
-            let xhr = new XMLHttpRequest();
-            xhr.open(
-                "GET",
-                "http://1162761-mavovk.tw1.ru:1337/api/products/?category=1"
-            );
-            xhr.send();
-
-            console.log(raspData);
-
-            xhr.onload = () => {
-                let products = JSON.parse(xhr.response);
+            fetch(`${process.env.BASE_URL}/products/?category=1`)
+            .then(response => response.json())
+            .then(products => {
                 for (let i = 0; i < products.length; i++) {
                     this.arrar.push(products[i]);
+
+                    // calculate discount and save if in priceC atrtibute
+                    if (products[i].discount != 0) {
+                        let priceDiscounted = products[i].price * (100 - products[i].discount) / 100;
+                        priceDiscounted = Math.round(priceDiscounted);
+                        this.arrar[i].priceDiscounted = priceDiscounted;
+                    }
+
+                    console.log(this.arrar);
                 }
-                console.log(this.arrar);
-            };
+            })
+            .catch(error => console.error(error));
         },
     },
     mounted() {

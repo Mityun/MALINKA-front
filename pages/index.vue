@@ -145,6 +145,15 @@ export default {
     Navbar,
     Under,
   },
+  mounted(){
+    // send request using fetch to BASE_URL /catlist and save response to local storage
+	fetch(`${process.env.BASE_URL}/catlist`)
+	.then(response => response.json())
+	.then(data => {
+		console.log(data);
+		localStorage.setItem('categories_list', JSON.stringify(data))
+	})
+  }
 };
 </script>
 
