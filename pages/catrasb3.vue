@@ -44,7 +44,7 @@
                                 </div>
 
                                 <div v-if="item.discount == 0" class="text-2xl text-black">
-                                    <b>{{ item.priceDiscounted }}</b
+                                    <b>{{ item.price }}</b
                                     >₽
                                 </div>
                                 <div
@@ -110,7 +110,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?category=1`)
+            fetch(`${process.env.BASE_URL}/products/?category=1&subcategory=1`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -141,6 +141,7 @@ export default {
     z-index: 0;
 }
 .lll {
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 </style>
