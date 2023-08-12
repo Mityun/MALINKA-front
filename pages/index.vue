@@ -110,7 +110,9 @@
         </div>
       </div>
     </div>
-    <Under />
+    <div class="mt-[499px]">
+      <Under />
+    </div>
   </section>
 </template>
 
@@ -121,8 +123,17 @@ import Navbar from '@/components/Navbar.vue'
 export default {
   components: {
     Navbar, Under
+  },
+
+  mounted(){
+    if (window.innerWidth < 1351) {
+      this.$router.push('/hah')
+    } else {
+      console.log('stanislav');
+    }
   }
 }
+
 </script>
 
 <style>
@@ -139,4 +150,5 @@ body{
   position: absolute;
   z-index: 0;
 }
+
 </style>
