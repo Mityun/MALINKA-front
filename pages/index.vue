@@ -132,7 +132,9 @@
         </div>
       </div>
     </div>
-    <Under />
+    <div class="mt-[499px]">
+      <Under />
+    </div>
   </section>
 </template>
 
@@ -142,19 +144,18 @@ import Navbar from "@/components/Navbar.vue";
 
 export default {
   components: {
-    Navbar,
-    Under,
+    Navbar, Under
   },
+
   mounted(){
-    // send request using fetch to BASE_URL /catlist and save response to local storage
-	fetch(`${process.env.BASE_URL}/catlist`)
-	.then(response => response.json())
-	.then(data => {
-		console.log(data);
-		localStorage.setItem('categories_list', JSON.stringify(data))
-	})
+    if (window.innerWidth < 1351) {
+      this.$router.push('/hah')
+    } else {
+      console.log('stanislav');
+    }
   }
-};
+}
+
 </script>
 
 <style>
@@ -171,4 +172,5 @@ body {
   position: absolute;
   z-index: 0;
 }
+
 </style>

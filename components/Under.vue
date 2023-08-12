@@ -1,5 +1,5 @@
 <template>
-  <section class="nnn mt-96">
+  <section class="nnn mt-28">
       <div class="main1 flex flex-row items-end h-80 p-0">
           <div class="bottom h-56 w-full flex flex-row justify-around items-center">
               <NuxtLink to="/" class="flex justify-center items-center basis-1/6"><img src="@/assets/BlackLogo1.svg" width="70%" alt=""></NuxtLink>
