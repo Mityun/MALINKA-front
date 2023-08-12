@@ -2,7 +2,9 @@
   <section>
       <Navbar />
       <div class="flex justify-center">
-        <div class="main2 flex flex-col justify-center mt-28 text-2xl w-2/3 max-w-[1196px]">
+        <div 
+          class="main2 flex flex-col justify-center mt-28 text-2xl w-2/3 max-w-[1196px]"
+        >
             <div class="w-2/3 max-w-[1066px]">
                 <div class="fl flex flex-row">Каталог &nbsp;/ <div class="text-[#EA7102]"> &nbsp; Orange pi </div> &nbsp; / &nbsp; <div class="text-[#EA7102]"> Orange Pi 16 </div></div>
             </div>

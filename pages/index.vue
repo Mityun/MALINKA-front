@@ -148,7 +148,7 @@ export default {
   },
 
   mounted(){
-    if (window.innerWidth < 1351) {
+    if (window.innerWidth < 1211) {
       this.$router.push('/hah')
     } else {
       console.log('stanislav');
