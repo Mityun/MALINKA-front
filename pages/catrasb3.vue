@@ -3,9 +3,9 @@
         <Navbar />
         <div class="flex justify-center">
             <div
-                class="main2 flex flex-col justify-center mt-28 text-2xl w-5/6"
+                class="main2 flex flex-col justify-center mt-28 text-2xl w-2/3 max-w-[1066px]"
             >
-                <div class="w-2/3 max-w-[1066px]">
+                <div class="w-full max-w-[1066px]">
                     <div class="fl flex flex-row">
                         Каталог &nbsp;/
                         <div class="text-[#BC1142]">&nbsp; Raspberry pi</div>
@@ -22,7 +22,7 @@
                     <div
                         v-for="item in arrar"
                         :key="item.id"
-                        class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px]"
+                        class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
                     >
                         <div
                             :style="{
@@ -33,9 +33,10 @@
                         ></div>
                         <div class="flex flex-row justify-between p-1">
                            <div class="ml-[13px]">
-                                <div class="text-lg text-[#D2D2D2] line-through" v-if="item.discount != 0">{{Number(item.priceDiscounted).toLocaleString('ru-RU')}} ₽</div>
+                                <div class="text-lg text-[#D2D2D2] line-through" v-if="item.discount != 0">{{Number(item.price).toLocaleString('ru-RU')}} ₽</div>
                                     <div class="flex flex-row">
-                                    <div class="text-4xl text-black font-semibold">{{Number(item.price).toLocaleString('ru-RU')}}</div>
+                                    <div class="text-4xl text-black font-semibold"  v-if="item.discount != 0">{{Number(item.priceDiscounted).toLocaleString('ru-RU')}}</div>
+                                    <div class="text-4xl text-black font-semibold" v-else>{{Number(item.price).toLocaleString('ru-RU')}}</div>
                                     <div class="text-4xl text-black ml-1">₽</div>
                                     </div>
                                     <div class="text-2xl text-black">{{item.name}}</div>
