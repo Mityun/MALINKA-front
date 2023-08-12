@@ -67,10 +67,3 @@ export default {
     }
   }
 }
-
-module.exports = {
-  server: {
-   host: process.env.NUXT_HOST,
-   port: process.env.NUXT_PORT,
-  },
-};
