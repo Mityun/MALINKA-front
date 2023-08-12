@@ -35,9 +35,24 @@ import Under from '@/components/Under.vue'
 import Navbar from '@/components/Navbar.vue'
 
 export default {
-  components: {
-    Navbar, Under
-  }
+  	components: {
+    	Navbar, Under
+  	},
+  	data() {
+		return {
+			api_queries: {}
+		};
+  	},
+  	mounted(){
+		// get categories list from local storage
+		// this.api_queries = localStorage.getItem('categories_list');
+		let categories_list = JSON.parse(localStorage.getItem('categories_list'));
+
+		console.log(categories_list)
+		// find element with name 'Raspberry pi', 
+		let rasp = categories_list['categories'].find(item => item.name.toLowerCase() == this.category);
+		console.log(rasp);
+	},
 }
 </script>
 

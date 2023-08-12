@@ -45,6 +45,9 @@ export default {
   css: [
     '@/assets/css/main.css',
   ],
+  env: {
+    BASE_URL: 'http://default-pi.ru:1337/api'
+  },
   /*
   ** Build configuration
   */
@@ -64,3 +67,10 @@ export default {
     }
   }
 }
+
+module.exports = {
+  server: {
+   host: process.env.NUXT_HOST,
+   port: process.env.NUXT_PORT,
+  },
+};
