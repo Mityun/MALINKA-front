@@ -16,7 +16,7 @@
                 <div class="flex justify-center mt-4"><img src="@/assets/Line14.svg" alt=""></div>
               </div>
             </div>
-            <NuxtLink to="/main" class="text-nav">О нас</NuxtLink>
+            <NuxtLink to="/about" class="text-nav">О нас</NuxtLink>
             <NuxtLink to="/reviews" class="text-nav">Отзывы</NuxtLink>
             <NuxtLink to="/contacts" class="text-nav">Контакты</NuxtLink>
             <NuxtLink to="/main" class="search"></NuxtLink>

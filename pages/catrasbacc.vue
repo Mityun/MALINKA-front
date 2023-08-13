@@ -10,7 +10,7 @@
                         <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi </NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#BC1142]">Raspberry Pi 3</div>
+                        <div class="text-[#BC1142]">Аксессуары</div>
                     </div>
                 </div>
             </div>

@@ -7,15 +7,15 @@
             >
                 <div class="w-2/3 max-w-[1066px]">
                     <div class="fl flex flex-row">
-                        Каталог &nbsp;/
-                        <div class="text-[#BC1142]">&nbsp; Raspberry pi</div>
+                        <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
+                        <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#BC1142]">Raspberry pi3</div>
+                        <div class="text-[#EA7102]">Orange pi</div>
                     </div>
                 </div>
             </div>
         </div>
-        <img src="@/assets/Ellipse21.svg" width="100%" alt="" class="pic1" />
+        <img src="@/assets/Ellipse22.svg" width="100%" alt="" class="pic1" />
         <div class="flex justify-center">
             <div class="w-2/3 justify-center items-center mt-6 max-w-[1066px]">
                 <div class="grid grid-cols-3 gap-4">

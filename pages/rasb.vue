@@ -11,18 +11,18 @@
        </div>
       <div class="flex justify-end"><img src="@/assets/Raspberry_Pi_Logo 1.svg" style="position: absolute;" class="z-0 -mt-56 w-1/3" alt=""></div>
       <div class="flex justify-center mt-20">
-          <div class="grid w-5/6 grid-cols-2 gap-4 mmm items-start">
+          <div class="grid w-5/6 grid-cols-2 gap-4 mmm items-start max-w-[955px]">
             <NuxtLink to="/catrasb3" class="bg-white backdrop-opacity-100 rounded-3xl p-3 flex flex-col justify-center">
                 <img src="@/assets/image2.svg" alt="">
-                <div class="h-28 flex items-center text-[#BC1142] text-2xl ml-3">Raspberry Pi 3</div>
+				<div class="h-28 flex items-center text-[#BC1142] text-2xl ml-3"> <div class="pl-5 pr-5 p-2 rounded-3xl border-2 border-[#D2D2D2]">Raspberry Pi 3</div></div>
             </NuxtLink>
-            <NuxtLink to="/rasb" class="bg-white backdrop-opacity-100 rounded-3xl p-3 flex flex-col justify-center">
+            <NuxtLink to="/catrasbacc" class="bg-white backdrop-opacity-100 rounded-3xl p-3 flex flex-col justify-center">
                <div class="flex justify-center items-center"> <img src="@/assets/image3.svg" alt="" class="w-2/3"></div>
-                <div class="h-28 flex items-center text-[#BC1142] text-2xl ml-3">Аксессуары</div>
+				<div class="h-28 flex items-center text-[#BC1142] text-2xl ml-3"> <div class="pl-5 pr-5 p-2 rounded-3xl border-2 border-[#D2D2D2]">Аксессуары</div></div>
             </NuxtLink>
-            <NuxtLink to="/rasb" class="bg-white backdrop-opacity-100 rounded-3xl p-3 flex flex-col justify-center">
+            <NuxtLink to="/catrasb4" class="bg-white backdrop-opacity-100 rounded-3xl p-3 flex flex-col justify-center">
                 <img src="@/assets/image2.svg" alt="">
-                <div class="h-28 flex items-center text-[#BC1142] text-2xl ml-3">Raspberry Pi 4</div>
+				<div class="h-28 flex items-center text-[#BC1142] text-2xl ml-3"> <div class="pl-5 pr-5 p-2 rounded-3xl border-2 border-[#D2D2D2]">Raspberry Pi 4</div></div>
             </NuxtLink>
           </div>
       </div>
@@ -37,22 +37,7 @@ import Navbar from '@/components/Navbar.vue'
 export default {
   	components: {
     	Navbar, Under
-  	},
-  	data() {
-		return {
-			api_queries: {}
-		};
-  	},
-  	mounted(){
-		// get categories list from local storage
-		// this.api_queries = localStorage.getItem('categories_list');
-		let categories_list = JSON.parse(localStorage.getItem('categories_list'));
-
-		console.log(categories_list)
-		// find element with name 'Raspberry pi', 
-		let rasp = categories_list['categories'].find(item => item.name.toLowerCase() == this.category);
-		console.log(rasp);
-	},
+  	}
 }
 </script>
 

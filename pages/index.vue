@@ -12,7 +12,7 @@
             <div
               class="but flex flex-row justify-around rounded-3xl border w-1/2 border-[#BC1142] items-center"
             >
-              <div class="text-[#BC1142] p-2">Raspberry Pi</div>
+              <div class="text-[#BC1142] p-2 font-semibold text-xl">Raspberry Pi</div>
               <img src="@/assets/Arrow1.svg" alt="" />
             </div>
           </NuxtLink>
@@ -25,7 +25,7 @@
             <div
               class="but flex flex-row justify-around rounded-3xl border w-1/2 border-[#EA7102] items-center"
             >
-              <div class="text-[#EA7102] p-2">Orange Pi</div>
+              <div class="text-[#EA7102] p-2 font-semibold text-xl">Orange Pi</div>
               <img src="@/assets/Arrow2.svg" alt="" />
             </div>
           </NuxtLink>
@@ -57,7 +57,7 @@
               <div
                 class="but flex flex-row justify-around rounded-3xl border w-1/2 border-black items-center"
               >
-                <div class="text-black p-2">К каталогу</div>
+                <div class="text-black p-2 font-semibold text-xl">К каталогу</div>
                 <img src="@/assets/Arrow3.svg" alt="" />
               </div>
             </NuxtLink>
@@ -71,7 +71,7 @@
             <div
               class="but flex flex-row justify-around rounded-3xl border w-1/2 border-black items-center"
             >
-              <div class="text-black p-2">Больше о нас</div>
+              <div class="text-black p-2 font-semibold text-xl">Больше о нас</div>
               <img src="@/assets/Arrow3.svg" alt="" />
             </div>
           </NuxtLink>
@@ -122,9 +122,9 @@
           <div class="flex justify-center">
             <NuxtLink to="/main" class="z-10">
               <div
-                class="but flex flex-row justify-around rounded-3xl border w-full border-black items-center"
+                class="but flex flex-row justify-around rounded-3xl border w-full border-black items-center pl-2 pr-2"
               >
-                <div class="text-black p-2">Отбросить сомнения</div>
+                <div class="text-black p-2 font-semibold text-xl">Отбросить сомнения</div>
                 <img src="@/assets/Arrow3.svg" alt="" />
               </div>
             </NuxtLink>
