@@ -83,7 +83,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?category=1`)
+            fetch(`${process.env.BASE_URL}/products/?subcategory=5`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -104,8 +104,6 @@ export default {
     },
     mounted() {
         this.fetchProducts();
-
-        
     },
 };
 </script>

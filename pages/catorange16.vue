@@ -10,7 +10,7 @@
                         <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#EA7102]">Orange pi 16</div>
+                        <div class="text-[#EA7102]">Orange pi 5</div>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?category=1`)
+            fetch(`${process.env.BASE_URL}/products/?subcategory=6`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -104,8 +104,6 @@ export default {
     },
     mounted() {
         this.fetchProducts();
-
-        
     },
 };
 </script>
