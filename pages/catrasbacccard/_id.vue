@@ -11,8 +11,8 @@
             >
                 <div class="max-w-[1066px]">
                     <div class="fl flex flex-row">
-                        <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
-                        <NuxtLink to="/orange" class="text-[#BC1142]">&nbsp; Raspberry Pi</NuxtLink>
+                        <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
+                        <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi</NuxtLink>
                         &nbsp; / &nbsp;
                         <NuxtLink class="text-[#BC1142]" to="/catrasbacccard/catrasbacc"> Аксессуары</NuxtLink>
                         &nbsp; / &nbsp;
