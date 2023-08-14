@@ -10,7 +10,7 @@
                         <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi </NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#BC1142]">Аксессуары</div>
+                        <div class="text-[#BC1142]">Raspberry Pi 4</div>
                     </div>
                 </div>
             </div>
@@ -23,6 +23,7 @@
                         v-for="item in arrar"
                         :key="item.id"
                         class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
+                        @click.prevent="openUser(item)"
                     >
                         <div
                             :style="{
@@ -83,7 +84,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?subcategory=7`)
+            fetch(`${process.env.BASE_URL}/products/?subcategory=2`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -101,6 +102,9 @@ export default {
             })
             .catch(error => console.error(error));
         },
+        openUser(item) {
+            this.$router.push('/catrasb4card/' + item.id)
+        }
     },
     mounted() {
         this.fetchProducts();  

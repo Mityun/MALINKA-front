@@ -23,6 +23,7 @@
                         v-for="item in arrar"
                         :key="item.id"
                         class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
+                        @click.prevent="openUser(item)"
                     >
                         <div
                             :style="{
@@ -101,6 +102,9 @@ export default {
             })
             .catch(error => console.error(error));
         },
+        openUser(item) {
+            this.$router.push('/catrasb3card/' + item.id)
+        }
     },
     mounted() {
         this.fetchProducts();  

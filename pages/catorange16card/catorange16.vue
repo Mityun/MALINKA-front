@@ -10,7 +10,7 @@
                         <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#EA7102]">Аксессуары</div>
+                        <div class="text-[#EA7102]">Orange pi 5</div>
                     </div>
                 </div>
             </div>
@@ -23,6 +23,7 @@
                         v-for="item in arrar"
                         :key="item.id"
                         class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
+                        @click.prevent="openUser(item)"
                     >
                         <div
                             :style="{
@@ -83,7 +84,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?subcategory=8`)
+            fetch(`${process.env.BASE_URL}/products/?subcategory=6`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -101,9 +102,12 @@ export default {
             })
             .catch(error => console.error(error));
         },
+        openUser(item) {
+            this.$router.push('/catorange16card/' + item.id)
+        }
     },
     mounted() {
-        this.fetchProducts(); 
+        this.fetchProducts();
     },
 };
 </script>

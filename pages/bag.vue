@@ -16,7 +16,10 @@
                                 {{item.name}}
                             </div>
                             <div class="flex flex-row justify-between items-center">
-                                <div class="card flex flex-col justify-end text-5xl font-semibold">
+                                <div class="card flex flex-col justify-end text-5xl font-semibold" v-if="item.discount != 0">
+                                    {{Number(item.priceDiscounted).toLocaleString('ru-RU')}} ₽
+                                </div>
+                                <div class="card flex flex-col justify-end text-5xl font-semibold" v-else>
                                     {{Number(item.price).toLocaleString('ru-RU')}} ₽
                                 </div>
                                 <div>
@@ -28,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card rounded-2xl flex justify-end items-baseline basis-1/3" :style="{'background-image': 'url(' + require('/assets/' + item.photo) + ')'}">
+                        <div class="card rounded-2xl flex justify-end items-baseline basis-1/3" :style="{'background-image':'url(' + item.photo_url + ')',}">
                             <div style="cursor:pointer;" @click="openUser(item)" ><img src="@/assets/Group29.svg" width="40px" alt=""></div>
                         </div>
                     </div>
@@ -74,7 +77,6 @@
 <script>
 import Under from '@/components/Under.vue'
 import Navbar from '@/components/Navbar.vue'
-import raspData from '@/components/raspData.js'
 
 export default {
   components: {
@@ -82,7 +84,7 @@ export default {
   },
   data(){
     return{
-      arrar: raspData,
+      arrar: [],
       hor: [],
       sum: 0,
       len: 0,
@@ -90,35 +92,44 @@ export default {
     }
   },
   mounted(){
-    for(var i=0; i < this.arrar.length + 1; i++){
-        if (localStorage.getItem(i) == null) {
-            console.log('ladno');
-        } else {
-            this.hor.push(JSON.parse(localStorage.getItem(i)))
-        }
-    }
-    console.log(this.hor);
-    for(var n=0; n < this.arrar.length + 1; n++){
-        if (this.hor[n] == null) {
-            console.log('ladno');
-        } else {
-            this.sum = this.sum + Number(this.hor[n].price)*Number(this.hor[n].count)
-            this.len = this.len + Number(this.hor[n].count)
-        }
-    }
-    for(var z=0; z < this.arrar.length + 1; z++){
-        if (this.hor[z] == null) {
-            console.log('ladno');
-        } else {
-            if (this.hor[z].priceC == '') {
-                this.sum1 = this.sum1 + Number(this.hor[z].price)*Number(this.hor[z].count)
-            } else {
-                this.sum1 = this.sum1 + Number(this.hor[z].priceC)*Number(this.hor[z].count)
-            }
-        }
-    }
+    this.fetchProducts();
   },
   methods: {
+    fetchProducts() {
+            fetch(`${process.env.BASE_URL}/products`)
+            .then(response => response.json())
+            .then(products => {
+                for (let i = 0; i < products.length; i++) {
+                    this.arrar.push(products[i]);
+
+                    // calculate discount and save if in priceC atrtibute
+                    if (products[i].discount != 0) {
+                        let priceDiscounted = products[i].price * (100 - products[i].discount) / 100;
+                        priceDiscounted = Math.round(priceDiscounted);
+                        this.arrar[i].priceDiscounted = priceDiscounted;
+                    }
+
+                    console.log(this.arrar);
+                    this.base = this.arrar[Number(this.$route.params.id) - 1];
+                    if (localStorage.getItem(i) == null) {
+                        console.log('ladno');
+                    } else {
+                        this.hor.push(JSON.parse(localStorage.getItem(i)))
+                    }
+                    this.len = this.hor.length
+                }
+                for (let m = 0; m < this.hor.length; m++) {
+                    this.sum1 = this.sum1 + Number(this.hor[m].price)*Number(this.hor[m].count)
+                    if (this.hor[m].discount == 0) {
+                        this.sum = this.sum + Number(this.hor[m].price)*Number(this.hor[m].count)
+                    } else {
+                        this.sum = this.sum + Number(this.hor[m].priceDiscounted)*Number(this.hor[m].count)
+                    }
+                }
+            })
+            .catch(error => console.error(error));
+
+    },
     openUser(item) {
       localStorage.removeItem(item.id)
       location.reload()
@@ -130,12 +141,12 @@ export default {
       this.arrar[item.id - 1].count = m
       localStorage.removeItem(item.id)
       localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
-      this.sum = this.sum + Number(item.price)
+      this.sum1 = this.sum1 + Number(item.price)
       this.len = this.len + 1
-      if (item.priceC == '') {
-        this.sum1 = this.sum1 + Number(item.price)
+      if (item.discount == 0) {
+        this.sum = this.sum + Number(item.price)
       } else {
-        this.sum1 = this.sum1 + Number(item.priceC)
+        this.sum = this.sum + Number(item.priceDiscounted)
       }
     },
     minus(item){
@@ -148,11 +159,11 @@ export default {
             this.arrar[item.id - 1].count = m
             localStorage.removeItem(item.id)
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
-            this.sum = this.sum - Number(item.price)
-            if (item.priceC == '') {
-                this.sum1 = this.sum1 - Number(item.price)
+            this.sum1 = this.sum1 - Number(item.price)
+            if (item.discount == 0) {
+                this.sum = this.sum - Number(item.price)
             } else {
-                this.sum1 = this.sum1 - Number(item.priceC)
+                this.sum = this.sum - Number(item.priceDiscounted)
             }
             this.len = this.len - 1     
         }

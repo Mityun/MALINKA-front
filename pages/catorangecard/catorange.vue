@@ -10,19 +10,20 @@
                         <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#EA7102]">Orange pi 5</div>
+                        <div class="text-[#EA7102]">Orange pi 4</div>
                     </div>
                 </div>
             </div>
         </div>
         <img src="@/assets/Ellipse22.svg" width="100%" alt="" class="pic1" />
         <div class="flex justify-center">
-            <div class="w-2/3 justify-center items-center mt-6 max-w-[1066px]">
+            <div class="w-2/3 justify-center items-center mt-6 max-w-[1066px]" >
                 <div class="grid grid-cols-3 gap-4">
                     <div
                         v-for="item in arrar"
                         :key="item.id"
-                        class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
+                        class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px] z-0"
+                        @click.prevent="openUser(item)"
                     >
                         <div
                             :style="{
@@ -47,9 +48,9 @@
                            
                         </div>
                         <div class="flex justify-center items-center h-16">
-                        <div class="z-10 hov" @click.prevent="openUser(item)">
+                        <div class="z-10 hov" >
                             <div class="but flex flex-row justify-center border-[2px] border-[#EA7102] items-center rounded-full">
-                            <div class="text-[#EA7102] p-3 pl-[71px] pr-[71px] font-semibold">Купить</div>
+                            <div class="text-[#EA7102] p-3 pl-[71px] pr-[71px] font-semibold z-10">Купить</div>
                             </div>
                         </div>
                         <div to="/main" class="z-10 hov" style="display:none" @click="openUser(item)">
@@ -83,7 +84,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?subcategory=6`)
+            fetch(`${process.env.BASE_URL}/products/?subcategory=5`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -101,6 +102,9 @@ export default {
             })
             .catch(error => console.error(error));
         },
+        openUser(item) {
+            this.$router.push('/catorangecard/' + item.id)
+        }
     },
     mounted() {
         this.fetchProducts();
