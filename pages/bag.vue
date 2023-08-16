@@ -10,22 +10,22 @@
             </div>
             <div class="flex flex-row">
                 <div class="allCards w-full">
-                    <div v-for="item in hor" :key="item.id" class="flex flex-row justify-between h-44 mt-9 bl">
+                    <div v-for="item in hor" :key="item.id" class="flex flex-row justify-between h-44 mt-9 bl w-[96%]" v-bind:id="item.id+'a'">
                         <div class="basis-2/3 flex flex-col justify-between">
                             <div class="text-3xl font-medium relative min-w-full">
                                 {{item.name}}
                             </div>
                             <div class="flex flex-row justify-between items-center">
-                                <div class="card flex flex-col justify-end text-5xl font-semibold" v-if="item.discount != 0">
-                                    {{Number(item.priceDiscounted).toLocaleString('ru-RU')}} ₽
+                                <div class="card flex flex-row justify-end text-5xl font-semibold items-end" v-if="item.discount != 0">
+                                    {{Number(item.priceDiscounted).toLocaleString('ru-RU')}} <div class="text-2xl ml-3">₽</div> 
                                 </div>
-                                <div class="card flex flex-col justify-end text-5xl font-semibold" v-else>
-                                    {{Number(item.price).toLocaleString('ru-RU')}} ₽
+                                <div class="card flex flex-row justify-end text-5xl font-semibold items-end" v-else>
+                                    {{Number(item.price).toLocaleString('ru-RU')}} <div class="text-2xl ml-3">₽</div> 
                                 </div>
                                 <div>
-                                    <div class="max-w-[77%] rounded-full border border-black grid grid-cols-3">
+                                    <div class="max-w-[87%] rounded-full border border-black grid grid-cols-3 ladnobut">
                                         <div style="cursor:pointer;border-right: 1px solid black;" @click="minus(item)" class="flex justify-center items-center p-2" ><img src="@/assets/Line10.svg" alt=""></div>
-                                        <div class="p-auto w-auto flex justify-center items-center text-2xl font-bold" v-bind:id="item.id">{{item.count}}</div>
+                                        <div class="p-auto w-auto flex justify-center items-center text-xl font-bold" v-bind:id="item.id">{{item.count}}</div>
                                         <div style="cursor:pointer;border-left: 1px solid black;" @click="plus(item)" class="flex justify-center items-center p-2"><img src="@/assets/Group30.svg" alt=""></div>
                                     </div>
                                 </div>
@@ -116,10 +116,11 @@ export default {
                     } else {
                         this.hor.push(JSON.parse(localStorage.getItem(i)))
                     }
-                    this.len = this.hor.length
+                    
                 }
                 for (let m = 0; m < this.hor.length; m++) {
                     this.sum1 = this.sum1 + Number(this.hor[m].price)*Number(this.hor[m].count)
+                    this.len = this.len + Number(this.hor[m].count)
                     if (this.hor[m].discount == 0) {
                         this.sum = this.sum + Number(this.hor[m].price)*Number(this.hor[m].count)
                     } else {
@@ -132,21 +133,24 @@ export default {
     },
     openUser(item) {
       localStorage.removeItem(item.id)
-      location.reload()
+      document.getElementById(item.id+'a').style.display = 'none'
     },
     plus(item){
       let k = document.getElementById(item.id).innerHTML
-      let m = Number(k) + 1
-      document.getElementById(item.id).innerHTML = m
-      this.arrar[item.id - 1].count = m
-      localStorage.removeItem(item.id)
-      localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
-      this.sum1 = this.sum1 + Number(item.price)
-      this.len = this.len + 1
-      if (item.discount == 0) {
-        this.sum = this.sum + Number(item.price)
-      } else {
-        this.sum = this.sum + Number(item.priceDiscounted)
+      if (Number(k) < 99) {
+        let m = Number(k) + 1
+        document.getElementById(item.id).innerHTML = m
+        this.arrar[item.id - 1].count = m
+        localStorage.removeItem(item.id)
+        localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+        this.sum1 = this.sum1 + Number(item.price)
+        this.len = this.len + 1
+        
+        if (item.discount == 0) {
+            this.sum = this.sum + Number(item.price)
+        } else {
+            this.sum = this.sum + Number(item.priceDiscounted)
+        }
       }
     },
     minus(item){
@@ -206,9 +210,14 @@ input::-webkit-input-placeholder{
     color: black; 
     font-size: 25px;
     font-weight: 500;
+    position: absolute;
+    margin-top: -2px;
 }
 .allCards{
     max-height: 850px;
     overflow-y: scroll;
+}
+.ladnobut{
+    user-select: none
 }
 </style>
