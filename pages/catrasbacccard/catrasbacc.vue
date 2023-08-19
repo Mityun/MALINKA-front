@@ -144,6 +144,7 @@ export default {
     },
     created(){
         this.fetchProducts1();
+        console.log('stas');
     }
 };
 </script>
