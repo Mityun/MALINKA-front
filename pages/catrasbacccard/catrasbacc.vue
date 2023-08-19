@@ -7,7 +7,7 @@
             >
                 <div class="w-2/3 max-w-[1066px]">
                     <div class="fl flex flex-row">
-                        <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
+                        <NuxtLink to="/rasb" id="ok"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi </NuxtLink>
                         &nbsp; / &nbsp;
                         <div class="text-[#BC1142]">Аксессуары</div>
@@ -23,8 +23,9 @@
                         v-for="item in arrar"
                         :key="item.id"
                         class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
-                        @click.prevent="openUser(item)"
+                
                     >
+                    <div class="absolute w-full h-full z-10" @click.prevent="openUser(item)"></div>
                         <div
                             :style="{
                                 'background-image':
@@ -48,9 +49,14 @@
                            
                         </div>
                         <div class="flex justify-center items-center h-16">
-                        <div class="z-10 hov" @click.prevent="openUser(item)">
-                            <div class="but flex flex-row justify-center border-[2px] border-[#BC1142] items-center rounded-full">
-                            <div class="text-[#BC1142] p-3 pl-[71px] pr-[71px] font-semibold">Купить</div>
+                        <div class="z-50 hov w-2/3" style="display:none" v-bind:id="item.id+'x'" >
+                            <div class="but flex flex-row justify-center border-[2px] pt-4 pb-4 border-[#BC1142] bg-white items-center rounded-full">
+                            <div class="text-[#BC1142] font-semibold">В корзине</div>
+                            </div>
+                        </div>
+                        <div class="z-50 hov w-2/3" @click.prevent="cartAdd(item)" v-bind:id="item.id+'z'" >
+                            <div class="but flex flex-row justify-center border-[2px] pt-4 pb-4 border-[#BC1142] bg-[#BC1142] items-center rounded-full opacity-90">
+                            <div class="text-[#FFFFFF] font-semibold">Купить</div>
                             </div>
                         </div>
                         <div to="/main" class="z-10 hov" style="display:none" @click="openUser(item)">
@@ -79,7 +85,10 @@ export default {
     },
     data() {
         return {
+            ara: [],
             arrar: [],
+            hor: [],
+            patata:1
         };
     },
     methods: {
@@ -96,19 +105,46 @@ export default {
                         priceDiscounted = Math.round(priceDiscounted);
                         this.arrar[i].priceDiscounted = priceDiscounted;
                     }
-
-                    console.log(this.arrar);
+                   
+                    
+                }
+            })
+            .catch(error => console.error(error));
+        },
+        fetchProducts1(){
+            fetch(`${process.env.BASE_URL}/products`)
+            .then(response => response.json())
+            .then(products => {
+                for (let i = 0; i < products.length; i++) {
+                   
+                    if (localStorage.getItem(i) == null) {
+                        
+                    } else {
+                        this.hor.push(JSON.parse(localStorage.getItem(i)))
+                    }
+                    for (let c = 0; c < this.hor.length; c++) {
+                        document.getElementById(this.hor[c].id + 'z').style.display = 'none'
+                        document.getElementById(this.hor[c].id + 'x').style.display = 'block' 
+                    }
                 }
             })
             .catch(error => console.error(error));
         },
         openUser(item) {
             this.$router.push('/catrasbacccard/' + item.id)
+        },
+        cartAdd(item) {
+            document.getElementById(item.id + 'z').style.display = 'none'
+            document.getElementById(item.id + 'x').style.display = 'block'
+            localStorage.setItem(item.id, JSON.stringify(item));
         }
     },
     mounted() {
-        this.fetchProducts();  
+        this.fetchProducts();
     },
+    created(){
+        this.fetchProducts1();
+    }
 };
 </script>
 
@@ -119,5 +155,8 @@ export default {
 }
 .lll {
     background-size: cover;
+}
+.but{
+    cursor: pointer;
 }
 </style>

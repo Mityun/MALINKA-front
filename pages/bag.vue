@@ -101,7 +101,7 @@ export default {
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
                     this.arrar.push(products[i]);
-
+                    console.log(this.hor[1]);
                     // calculate discount and save if in priceC atrtibute
                     if (products[i].discount != 0) {
                         let priceDiscounted = products[i].price * (100 - products[i].discount) / 100;
@@ -115,6 +115,7 @@ export default {
                         console.log('ladno');
                     } else {
                         this.hor.push(JSON.parse(localStorage.getItem(i)))
+                        
                     }
                     
                 }

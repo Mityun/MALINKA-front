@@ -94,7 +94,8 @@ export default {
     data() {
         return {
             arrar: [],
-            base: {}
+            base: {},
+            
         };
     },
     methods: {
@@ -111,6 +112,8 @@ export default {
                         priceDiscounted = Math.round(priceDiscounted);
                         this.arrar[i].priceDiscounted = priceDiscounted;
                     }
+
+
 
                     console.log(this.arrar);
                     this.base = this.arrar[Number(this.$route.params.id) - 1];
