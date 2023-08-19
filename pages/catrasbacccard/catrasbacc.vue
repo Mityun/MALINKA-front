@@ -136,6 +136,7 @@ export default {
         cartAdd(item) {
             document.getElementById(item.id + 'z').style.display = 'none'
             document.getElementById(item.id + 'x').style.display = 'block'
+            item.count = 1
             localStorage.setItem(item.id, JSON.stringify(item));
         }
     },
