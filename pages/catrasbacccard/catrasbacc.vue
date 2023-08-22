@@ -36,10 +36,10 @@
                         <div class="flex flex-row justify-between p-1">
                            <div class="ml-[13px]">
                                 <div class="text-lg text-[#D2D2D2] line-through" v-if="item.discount != 0">{{Number(item.price).toLocaleString('ru-RU')}} ₽</div>
-                                    <div class="flex flex-row">
+                                    <div class="flex flex-row items-end">
                                     <div class="text-4xl text-black font-semibold"  v-if="item.discount != 0">{{Number(item.priceDiscounted).toLocaleString('ru-RU')}}</div>
                                     <div class="text-4xl text-black font-semibold" v-else>{{Number(item.price).toLocaleString('ru-RU')}}</div>
-                                    <div class="text-4xl text-black ml-1">₽</div>
+                                    <div class="text-2xl text-black ml-1">₽</div>
                                     </div>
                                     <div class="text-2xl text-black">{{item.name}}</div>
                                 </div>
@@ -51,12 +51,12 @@
                         <div class="flex justify-center items-center h-16">
                         <div class="z-50 hov w-2/3" style="display:none" v-bind:id="item.id+'x'" >
                             <div class="but flex flex-row justify-center border-[2px] pt-4 pb-4 border-[#BC1142] bg-white items-center rounded-full">
-                            <div class="text-[#BC1142] font-semibold">В корзине</div>
+                            <div class="text-[#BC1142] font-semibold text-xl">В корзине</div>
                             </div>
                         </div>
                         <div class="z-50 hov w-2/3" @click.prevent="cartAdd(item)" v-bind:id="item.id+'z'" >
                             <div class="but flex flex-row justify-center border-[2px] pt-4 pb-4 border-[#BC1142] bg-[#BC1142] items-center rounded-full opacity-90">
-                            <div class="text-[#FFFFFF] font-semibold">Купить</div>
+                            <div class="text-[#FFFFFF] font-semibold text-xl">Купить</div>
                             </div>
                         </div>
                         <div to="/main" class="z-10 hov" style="display:none" @click="openUser(item)">
@@ -123,8 +123,11 @@ export default {
                         this.hor.push(JSON.parse(localStorage.getItem(i)))
                     }
                     for (let c = 0; c < this.hor.length; c++) {
-                        document.getElementById(this.hor[c].id + 'z').style.display = 'none'
-                        document.getElementById(this.hor[c].id + 'x').style.display = 'block' 
+                        console.log(document.getElementById(this.hor[c].id + 'z'));
+                        if(document.getElementById(this.hor[c].id + 'z') != null){
+                            document.getElementById(this.hor[c].id + 'z').style.display = 'none'
+                            document.getElementById(this.hor[c].id + 'x').style.display = 'block' 
+                        }
                     }
                 }
             })
@@ -145,7 +148,6 @@ export default {
     },
     created(){
         this.fetchProducts1();
-        console.log('stas');
     }
 };
 </script>

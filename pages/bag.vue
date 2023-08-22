@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card rounded-2xl flex justify-end items-baseline basis-1/3" :style="{'background-image':'url(' + item.photo_url + ')',}">
+                        <div class="card rounded-2xl flex justify-end items-baseline basis-1/3" :style="{'background-image':'url(' + item.main_photo_url + ')',}">
                             <div style="cursor:pointer;" @click="openUser(item)" ><img src="@/assets/Group29.svg" width="40px" alt=""></div>
                         </div>
                     </div>
@@ -135,6 +135,13 @@ export default {
     openUser(item) {
       localStorage.removeItem(item.id)
       document.getElementById(item.id+'a').style.display = 'none'
+      this.len = this.len - item.count
+      this.sum1 = this.sum1 - Number(item.count)*Number(item.price)
+      if (item.discount == 0) {
+            this.sum = this.sum - Number(item.price)*Number(item.count)
+      } else {
+            this.sum = this.sum - Number(item.priceDiscounted)*Number(item.count)
+      }
     },
     plus(item){
       let k = document.getElementById(item.id).innerHTML
@@ -146,7 +153,7 @@ export default {
         localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
         this.sum1 = this.sum1 + Number(item.price)
         this.len = this.len + 1
-        
+        item.count = Number(item.count) + 1
         if (item.discount == 0) {
             this.sum = this.sum + Number(item.price)
         } else {
@@ -165,6 +172,7 @@ export default {
             localStorage.removeItem(item.id)
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
             this.sum1 = this.sum1 - Number(item.price)
+            item.count = Number(item.count) - 1
             if (item.discount == 0) {
                 this.sum = this.sum - Number(item.price)
             } else {
