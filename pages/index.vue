@@ -2,7 +2,7 @@
   <section>
     <Navbar />
     <div class="flex justify-center">
-      <img src="@/assets/Ellipse20.svg" width="100%" alt="" class="pic1 max-w-[1419px]" />
+      <img src="@/assets/Ellipse20.svg" width="100%" alt="" class="pic1 max-w-[1419px] -z-50" />
     </div>
     <div class="flex justify-center mt-24">
       <div class="container flex flex-row h-96 w-5/6 max-w-[1121px]">
@@ -32,7 +32,7 @@
             </div>
           </NuxtLink>
         </div>
-        <div class="basis-[46%] text flex flex-col">
+        <div class="basis-[46%] text flex flex-col z-50">
           <div class="text-3xl font-semibold mt-2">DEFAULT это -</div>
           <div class="flex items-center h-2/3 text-xl flex-col justify-between">
             <div>
@@ -49,7 +49,7 @@
     </div>
     <div class="flex justify-center mt-52">
       <div class="container flex flex-row h-96 w-5/6 max-w-[1121px]">
-        <div class="basis-1/2 flex flex-col justify-between">
+        <div class="basis-1/2 flex flex-col justify-between z-50">
           <div class="text-3xl font-semibold mt-2">
             Я нахожусь не в России, возможна ли доставка?
           </div>

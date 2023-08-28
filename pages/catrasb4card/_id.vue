@@ -2,32 +2,29 @@
   <section>
     <Navbar />
    
-<div class="mt-28">
-  <div class="pt-6">
-    <nav aria-label="Breadcrumb">
-      <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div
-                class="main2 flex flex-col justify-center text-2xl w-2/3 max-w-[1066px]"
+  <div class="mt-28">
+       <div class="flex justify-center">
+            <div
+                class="main2 flex flex-col justify-center text-2xl w-5/6 max-w-[1433px]"
             >
-                <div class="max-w-[1066px]">
-                    <div class="fl flex flex-row">
-                        <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
-                        <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi</NuxtLink>
+                <div class="w-auto">
+                    <div class="fl flex flex-row max-w-[1433px]" style="white-space: nowrap">
+                        <NuxtLink to="/rasb" style="white-space: nowrap"> Каталог &nbsp;/ </NuxtLink>
+                        <NuxtLink to="/rasb" class="text-[#BC1142]" style="white-space: nowrap">&nbsp; Raspberry Pi</NuxtLink>
                         &nbsp; / &nbsp;
-                        <NuxtLink class="text-[#BC1142]" to="/catrasb4card/catrasb4"> Raspberry Pi 4</NuxtLink>
+                        <NuxtLink class="text-[#BC1142]" to="/catrasb4card/catrasb4" style="white-space: nowrap"> Raspberry Pi 4</NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#BC1142]" >{{base.name}}</div>
+                        <div class="text-[#BC1142]" style="white-space: nowrap">{{base.name}}</div>
                     </div>
                 </div>
             </div>
-      </ol>
-    </nav>
-      <div class="w-full bg-white min-h-[133px] mt-28 pt-16 pb-16 flex flex-col justify-center items-center">
-        <div class="max-w-[1112px] w-auto">
-          <div class="flex flex-row justify-start max-w-[1112px]">
-            <div class="flex flex-row h-[471px]">
-              <div class="-mt-4 w-40" style="overflow-y: scroll;">
-                <img class="w-36 h-36 mt-4 rounded-xl border-2 border-black"
+      </div>
+      <div class="w-full bg-white min-h-[133px] mt-6 pt-16 pb-16 flex flex-col justify-around items-center rounded-3xl">
+        <div class=" w-5/6 max-w-[1433px]">
+          <div class="flex flex-row justify-start ">
+            <div class="flex flex-row basis-[55%]">
+              <div class="-mt-4 w-[19%]" style="overflow-y: scroll;">
+                <img class="w-[99%] h-[21%] mt-4 rounded-xl border-2 border-black"
                   v-for="pic in pictures"
                   :key="pic.id"
                   :src="pic"
@@ -35,10 +32,10 @@
                   @click.prevent="photo(pic)"
                 >
               </div>
-              <div :style="{'background-image':'url(' + picture + ')',}" class="h-[471px] w-[471px] ml-4 rounded-xl border-2 border-black bg-cover"></div>
+              <div :style="{'background-image':'url(' + picture + ')',}" class="lg:h-[51%] xl:h-[99%] w-[81%] min-h-[471px] ml-4 rounded-xl border-2 border-black bg-cover"></div>
             </div>
             <div class="flex flex-col ml-4 basis-[45%]">
-              <p class="text-4xl font-medium black " style="white-space:nowrap"> {{base.name}}</p>
+              <p class="text-3xl black font-semibold" style="white-space:nowrap"> {{base.name}}</p>
               <div class="mt-10 flex flex-row">
                 <div class="text-5xl text-black flex flex-row items-end font-semibold" v-if="base.discount != 0">{{Number(base.priceDiscounted).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
                 <div class="text-5xl text-black flex flex-row items-end font-semibold" v-else>{{Number(base.price).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
@@ -48,7 +45,7 @@
               <div v-if="okey" style="cursor:pointer;" class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#BC1142] bg-[#BC1142] px-8 py-3 text-2xl font-medium text-white stasik" @click.prevent="cartAdd(base)">Купить</div>
               <div v-else class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#BC1142] bg-white px-8 py-3 text-2xl font-medium text-[#BC1142] " >В корзине</div>
 
-              <div class="rounded-full border-2 border-[#BC1142] grid grid-cols-3 mt-10">
+              <div class="rounded-full border-2 border-[#BC1142] grid grid-cols-3 mt-10 h-[60px]">
                   <div style="cursor:pointer;" @click="minus(base)" class="flex justify-center items-center p-2" ><img src="@/assets/Line10red.svg" alt=""></div>
                   <div class="p-auto w-auto flex justify-center items-center text-xl font-bold text-[#BC1142]" v-bind:id="base.id">{{base.count}}</div>
                   <div style="cursor:pointer;" @click="plus(base)" class="flex justify-center items-center p-2"><img src="@/assets/Group30red.svg" alt=""></div>
@@ -76,9 +73,9 @@
         </div>
       </div>
     </div>
+    <div class="-mt-96">
+      <Under />
     </div>
-
-    <Under />
   </section>
 </template>
 
@@ -193,6 +190,7 @@ export default {
     },
 };
 </script>
+
 
 <style>
 .ladnobut{
