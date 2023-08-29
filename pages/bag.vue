@@ -174,11 +174,13 @@ export default {
         let m = Number(k) + 1
         document.getElementById(item.id).innerHTML = m
         this.arrar[item.id - 1].count = m
+        this.arrar[item.id - 1].main_photo_url = item.photo_url.split(';')[0]
         localStorage.removeItem(item.id)
         localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
         this.all_sum = this.all_sum + Number(item.price)
         this.len = this.len + 1
         item.count = Number(item.count) + 1
+        item.main_photo_url = item.photo_url.split(';')[0]
         if (item.discount == 0) {
             this.final_sum = this.final_sum + Number(item.price)
         } else {
@@ -194,10 +196,12 @@ export default {
             let m = k - 1
             document.getElementById(item.id).innerHTML = m
             this.arrar[item.id - 1].count = m
+            this.arrar[item.id - 1].main_photo_url = item.photo_url.split(';')[0]
             localStorage.removeItem(item.id)
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
             this.all_sum = this.all_sum - Number(item.price)
             item.count = Number(item.count) - 1
+            item.main_photo_url = item.photo_url.split(';')[0]
             if (item.discount == 0) {
                 this.final_sum = this.final_sum - Number(item.price)
             } else {
