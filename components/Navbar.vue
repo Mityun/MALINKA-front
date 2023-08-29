@@ -1,16 +1,16 @@
 <template>
   <section>
-      <div class="main grid grid-cols-12 ">
+      <div class="main grid grid-cols-12 bg-[#D2D2D2] ">
         <div class="photo_navbar">
           <NuxtLink to="/" class="logo"><img src="@/assets/BlackLogo1.svg" width="80%" alt=""></NuxtLink>
         </div>
         <div class="lan">
           <div class="main_navbar max-w-4xl">
             <NuxtLink to="/" class="text-nav">Главная</NuxtLink>
-            <div class="text-nav cat1 flex flex-col justify-center">
+            <div class="text-nav cat1 flex flex-col justify-center z-20">
               <div>Каталог</div>
-              <div class="one z-20 flex flex-col transition-all bg-[#D2D2D2]">
-                <NuxtLink to="/rasb" class="cat"> &#62; Rasberry Pi</NuxtLink>
+              <div class="one z-10 flex flex-col duration-100 bg-[#D2D2D2]">
+                <NuxtLink to="/rasb" class="cat mt-[20px]"> &#62; Rasberry Pi</NuxtLink>
                 <NuxtLink to="/orange" class="cat"> &#62; Orange Pi</NuxtLink>
                 <NuxtLink to="/" class="cat"> &#62; Прочее</NuxtLink>
                 <div class="flex justify-center mt-4"><img src="@/assets/Line14.svg" alt=""></div>
@@ -89,15 +89,20 @@ section{
 .one{
   visibility: hidden;
   position: absolute;
-  margin-top: 208px;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: -45px;
+  height: 0px;
+  overflow: hidden;
+  margin-top: 60px;
   border: 1px solid black;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  margin-left: -45px;
 }
 .cat1:hover .one{
   visibility: visible;
+  height: 150px;
+  margin-top: 208px;
 }
 .one:hover{
   visibility: visible;

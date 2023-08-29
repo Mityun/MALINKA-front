@@ -1,59 +1,68 @@
 <template>
   <section>
     <Navbar />
-    <img src="@/assets/Ellipse20.svg" width="100%" alt="" class="pic1" />
+    <div class="flex justify-center">
+      <img src="@/assets/Ellipse20.svg" width="100%" alt="" class="pic1 max-w-[1419px] -z-50" />
+    </div>
     <div class="flex justify-center mt-24">
-      <div class="container flex flex-row h-96 w-5/6">
-        <div class="basis-1/3 flex flex-col">
+      <div class="container flex flex-row h-96 w-5/6 max-w-[1121px]">
+        <div class="basis-[27%] flex flex-col">
           <div class="w-full h-full p-2">
             <div class="w-full h-full bg-[#D9D9D9] backdrop-opacity-100"></div>
           </div>
           <NuxtLink to="/rasb" class="z-10">
             <div
-              class="but flex flex-row justify-around rounded-3xl border w-1/2 border-[#BC1142] items-center"
+              class="but flex flex-row justify-around rounded-3xl border w-2/3 border-[#BC1142] items-center ml-[8px]"
             >
-              <div class="text-[#BC1142] p-2 font-semibold text-xl">Raspberry Pi</div>
+              <div class="text-[#BC1142] p-2 font-semibold text-lg">Raspberry Pi</div>
               <img src="@/assets/Arrow1.svg" alt="" />
             </div>
           </NuxtLink>
         </div>
-        <div class="basis-1/3 flex flex-col">
+        <div class="basis-[27%] flex flex-col">
           <div class="w-full h-full p-2">
             <div class="w-full h-full bg-[#D9D9D9] backdrop-opacity-100"></div>
           </div>
           <NuxtLink to="/orange" class="z-10">
             <div
-              class="but flex flex-row justify-around rounded-3xl border w-1/2 border-[#EA7102] items-center"
+              class="but flex flex-row justify-around rounded-3xl border w-2/3 border-[#EA7102] items-center ml-[8px]"
             >
-              <div class="text-[#EA7102] p-2 font-semibold text-xl">Orange Pi</div>
+              <div class="text-[#EA7102] p-2 font-semibold text-lg">Orange Pi</div>
               <img src="@/assets/Arrow2.svg" alt="" />
             </div>
           </NuxtLink>
         </div>
-        <div class="basis-1/3 text flex flex-col">
-          <div class="text-3xl font-semibold mt-2">Кто мы?</div>
-          <div class="flex items-center h-2/3 text-xl">
+        <div class="basis-[46%] text flex flex-col z-50">
+          <div class="text-3xl font-semibold mt-2">DEFAULT это -</div>
+          <div class="flex items-center h-2/3 text-xl flex-col justify-between">
             <div>
-              Да я ебу что ли? Мы ахуенные короче, это да. Ебашим тут как шлюхи,
-              пиздец конечно. Короче да, давайте прям щас 100500 тыщ денег нам
-              всем ;]
+              <b>Регулярные поставки!</b> <br>
+              Мы получаем новые микросхемы <b>каждую неделю,</b> поэтому вы сможете <b>быстрее всех</b> получать новинки! <br>
+            </div>
+            <div class="mt-[13px]">
+              <b>Низкие цены!</b> <br>
+              Мы занимаемся прямым импортом <b>с официального завода Raspberry Pi.</b> Такой метод позволяет вести самую прилекательную ценовую политику для наших клиентов!
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="flex justify-center mt-52">
-      <div class="container flex flex-row h-96 w-5/6">
-        <div class="basis-1/2 flex flex-col justify-between">
+      <div class="container flex flex-row h-96 w-5/6 max-w-[1121px]">
+        <div class="basis-1/2 flex flex-col justify-between z-50">
           <div class="text-3xl font-semibold mt-2">
-            А я в залупе живу, ко мне доставите?
+            Я нахожусь не в России, возможна ли доставка?
+          </div>
+          <div class="text-xl w-5/6">
+            <b>Не проблема!</b> <br>
+            Наша логистика обеспечивает поставки <b>более чем в 40 стран! </b>
+
+          </div>
+          <div class="text-xl w-5/6">
+              А поскольку наш склад работает <b>круглосуточно,</b> ваш заказ незамедлительно будет собран, чтобы вы как можно скорее получили товар!
           </div>
           <div class="flex flex-col">
-            <div class="text-xl w-5/6">
-              Нихуя ты выдал! Конечно доставим, мужик! Ведь мы доставляем по
-              <b>всему СНГ! Ты только выбери!</b>
-            </div>
-            <NuxtLink to="/main" class="z-10">
+            <NuxtLink to="/rasb" class="z-10">
               <div
                 class="but flex flex-row justify-around rounded-3xl border w-1/2 border-black items-center"
               >
@@ -67,11 +76,11 @@
           <div class="w-full h-full p-2">
             <div class="w-full h-full bg-[#D9D9D9] backdrop-opacity-100"></div>
           </div>
-          <NuxtLink to="/main" class="z-10">
+          <NuxtLink to="/about" class="z-10">
             <div
-              class="but flex flex-row justify-around rounded-3xl border w-1/2 border-black items-center"
+              class="but flex flex-row justify-around rounded-3xl border w-1/2 border-black items-center ml-2"
             >
-              <div class="text-black p-2 font-semibold text-xl">Больше о нас</div>
+              <div class="text-black p-2 font-semibold text-xl ">Больше о нас</div>
               <img src="@/assets/Arrow3.svg" alt="" />
             </div>
           </NuxtLink>
@@ -79,53 +88,55 @@
       </div>
     </div>
     <div class="flex mt-36 justify-center">
-      <div class="text-5xl w-5/6 font-semibold mt-2">
+      <div class="text-5xl w-5/6 font-semibold mt-2 max-w-[1121px]">
         Немного <br />
         статистики
       </div>
     </div>
-    <img src="@/assets/Ellipse19.svg" width="100%" alt="" class="pic1" />
+    <div class="flex justify-center -z-50">
+      <img src="@/assets/Ellipse19.svg" width="100%" alt="" class="pic1 max-w-[1419px]" />
+    </div>
 
-    <div class="flex justify-center mt-36">
-      <div class="container flex flex-row h-96 w-2/3">
-        <div class="basis-1/3 flex flex-col justify-start">
+    <div class="flex justify-center mt-36 z-30">
+      <div class="container flex flex-row h-96 xl:h-[450px] w-5/6 max-w-[1121px]">
+        <div class="basis-1/3 flex flex-col justify-start p-4 -ml-4">
           <div
             class="card w-full h-1/3 rounded-3xl border-2 border-[#BC1142] bg-[#D2D2D2] backdrop-opacity-100 flex flex-row justify-around items-center p-3"
           >
             <div class="text-8xl font-semibold w-1/2">281</div>
-            <div class="text-xs w-1/3">
-              Столько людей уже получили свои заказы!
+            <div class="text-xs w-1/3 xl:w-1/2">
+              <div class="font-semibold lg:text-sm xl:text-base"><b>Электронных плат мы отправили клиентам!</b></div>
             </div>
           </div>
         </div>
-        <div class="basis-1/3 flex flex-col justify-center">
+        <div class="basis-1/3 flex flex-col justify-center p-4 -ml-4">
           <div
             class="card w-full h-1/3 rounded-3xl border-2 border-[#EA7102] bg-[#D2D2D2] backdrop-opacity-100 flex flex-row justify-around items-center p-3"
           >
-            <div class="text-8xl font-semibold w-1/2">37</div>
-            <div class="text-xs w-1/3">
-              Заказов было составлено за последний месяц!
+            <div class="text-8xl font-[600] w-1/2 text-center ">37</div>
+            <div class="text-xs w-1/2">
+              <div class="font-[600] lg:text-sm xl:text-base"><b>Клиентов уже выбрали нас!</b></div>
             </div>
           </div>
         </div>
-        <div class="basis-1/3 text flex flex-col justify-end">
+        <div class="basis-1/3 text flex flex-col justify-end z-50 p-4 -ml-4">
           <div
             class="card w-full h-1/3 flex flex-row justify-center items-center"
           >
             <div class="text-8xl font-semibold">1</div>
-            <div class="text-xs">
-              <div class="text-5xl font-semibold">Ты</div>
+            <div class="text-xs flex flex-col items-center h-24">
+              <div class="text-5xl font-semibold mt-2">Ты</div>
               <br />
-              еще не заказалы!
+              <div class=" -mt-4 font-[600]">Все еще <br>думаешь!</div>
             </div>
           </div>
-          <div class="flex justify-center">
-            <NuxtLink to="/main" class="z-10">
+          <div>
+            <NuxtLink to="/rasb" class="z-50 flex justify-center">
               <div
-                class="but flex flex-row justify-around rounded-3xl border w-full border-black items-center pl-2 pr-2"
+                class="but flex flex-row justify-between rounded-3xl border w-1/2 border-black items-center pl-2 pr-2 "
               >
-                <div class="text-black p-2 font-semibold text-xl">Отбросить сомнения</div>
-                <img src="@/assets/Arrow3.svg" alt="" />
+                <div class="text-black p-2 font-semibold text-xs text-center w-5/6">Отбросить <br> сомнения</div>
+                <div class="w-1/6"><img src="@/assets/Arrow3.svg" alt="" ></div>
               </div>
             </NuxtLink>
           </div>
@@ -172,5 +183,7 @@ body {
   position: absolute;
   z-index: 0;
 }
-
+.but{
+  white-space: nowrap;
+}
 </style>

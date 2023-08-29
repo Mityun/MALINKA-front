@@ -31,7 +31,7 @@
                     <div class="flex flex-col items-center w-96 h-[499px] cardab rounded-[40px] justify-around p-5">
                         <div class="w-[256px] h-[256px] bg-[#D9D9D9] rounded-full"></div>
                         <div class="font-semibold text-2xl">Дмитрий</div>
-                        <div class="text-xl text-center">Специалист по международной торговле,Экономист, бизнес-аналитик</div>
+                        <div class="text-xl text-center">Специалист по международной торговле,&nbsp;Экономист, бизнес-аналитик</div>
                     </div>
                     <div class="flex flex-col items-center w-96 h-[499px] cardab rounded-[40px] justify-around p-5">
                         <div class="w-[256px] h-[256px] bg-[#D9D9D9] rounded-full"></div>

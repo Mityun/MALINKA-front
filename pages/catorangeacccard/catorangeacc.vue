@@ -7,15 +7,15 @@
             >
                 <div class="w-2/3 max-w-[1066px]">
                     <div class="fl flex flex-row">
-                        <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
-                        <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi </NuxtLink>
+                        <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
+                        <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
                         &nbsp; / &nbsp;
-                        <div class="text-[#BC1142]">Raspberry Pi 4</div>
+                        <div class="text-[#EA7102]" >Аксессуары</div>
                     </div>
                 </div>
             </div>
         </div>
-        <img src="@/assets/Ellipse21.svg" width="100%" alt="" class="pic1" />
+        <img src="@/assets/Ellipse22.svg" width="100%" alt="" class="pic1" />
         <div class="flex justify-center">
             <div class="w-2/3 justify-center items-center mt-6 max-w-[1066px]">
                 <div class="grid grid-cols-3 gap-4">
@@ -23,6 +23,7 @@
                         v-for="item in arrar"
                         :key="item.id"
                         class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
+                        @click.prevent="openUser(item)"
                     >
                         <div
                             :style="{
@@ -41,15 +42,15 @@
                                     </div>
                                     <div class="text-2xl text-black">{{item.name}}</div>
                                 </div>
-                                <div class="skidka text-2xl text-black border-[#BC1142] border-[2px] rounded-2xl h-12 pl-4 pr-4 flex flex-row justify-center items-center"  v-if="item.discount != 0">
+                                <div class="skidka text-2xl text-black border-[#EA7102] border-[2px] rounded-2xl h-12 pl-4 pr-4 flex flex-row justify-center items-center"  v-if="item.discount != 0">
                                     <div>-{{item.discount}}%</div>
                                 </div>
                            
                         </div>
                         <div class="flex justify-center items-center h-16">
                         <div class="z-10 hov" @click.prevent="openUser(item)">
-                            <div class="but flex flex-row justify-center border-[2px] border-[#BC1142] items-center rounded-full">
-                            <div class="text-[#BC1142] p-3 pl-[71px] pr-[71px] font-semibold">Купить</div>
+                            <div class="but flex flex-row justify-center border-[2px] border-[#EA7102] items-center rounded-full">
+                            <div class="text-[#EA7102] p-3 pl-[71px] pr-[71px] font-semibold">Купить</div>
                             </div>
                         </div>
                         <div to="/main" class="z-10 hov" style="display:none" @click="openUser(item)">
@@ -83,7 +84,7 @@ export default {
     },
     methods: {
         fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products/?subcategory=2`)
+            fetch(`${process.env.BASE_URL}/products/?subcategory=8`)
             .then(response => response.json())
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
@@ -101,9 +102,12 @@ export default {
             })
             .catch(error => console.error(error));
         },
+        openUser(item) {
+            this.$router.push('/catorangeacccard/' + item.id)
+        }
     },
     mounted() {
-        this.fetchProducts();  
+        this.fetchProducts(); 
     },
 };
 </script>
