@@ -19,10 +19,10 @@
                             </div>
                             <div class="flex flex-row justify-between items-center">
                                 <div class="card flex flex-row justify-end text-5xl font-semibold items-end" v-if="item.discount != 0">
-                                    {{Number(item.priceDiscounted).toLocaleString('ru-RU')}} <div class="text-2xl ml-3">₽</div> 
+                                    {{item.priceDiscounted.toLocaleString('ru-RU')}} <div class="text-2xl ml-3">₽</div> 
                                 </div>
                                 <div class="card flex flex-row justify-end text-5xl font-semibold items-end" v-else>
-                                    {{Number(item.price).toLocaleString('ru-RU')}} <div class="text-2xl ml-3">₽</div> 
+                                    {{item.price.toLocaleString('ru-RU')}} <div class="text-2xl ml-3">₽</div> 
                                 </div>
                                 <div>
                                     <div class="max-w-[87%] rounded-full border border-black grid grid-cols-3 ladnobut">
@@ -82,13 +82,13 @@
                     <input class="payform-tinkoff-row" type="hidden" name="frame" value="false">
                     <input class="payform-tinkoff-row" type="hidden" name="language" value="ru"> 
 
-                        <input class="mb-[151px] mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required>
-                        <input class="mb-[151px] mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Номер заказа" name="order">
-                        <input class="mb-[151px] mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Описание заказа" name="description">
-                        <input class="mb-[151px] mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name">
-                        <input class="mb-[151px] mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email">
-                        <input class="mb-[151px] mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone">
-                        <input class="text-5xl font-semibold mb-[151px] mt-7 mb-0 rounded-full h-7 place" type="submit" value="Оплатить">
+                        <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required>
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Номер заказа" name="order">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Описание заказа" name="description">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone">
+                        <input class="text-5xl font-semibold mt-7 mb-0 rounded-full h-7 place" type="submit" value="Оплатить">
                     </form>
                 </div>
         </div>
@@ -145,12 +145,12 @@ export default {
                     
                 }
                 for (let m = 0; m < this.hor.length; m++) {
-                    this.sum1 = this.sum1 + Number(this.hor[m].price)*Number(this.hor[m].count)
+                    this.all_sum = this.all_sum + Number(this.hor[m].price)*Number(this.hor[m].count)
                     this.len = this.len + Number(this.hor[m].count)
                     if (this.hor[m].discount == 0) {
-                        this.sum = this.sum + Number(this.hor[m].price)*Number(this.hor[m].count)
+                        this.final_sum = this.final_sum + Number(this.hor[m].price)*Number(this.hor[m].count)
                     } else {
-                        this.sum = this.sum + Number(this.hor[m].priceDiscounted)*Number(this.hor[m].count)
+                        this.final_sum = this.final_sum + Number(this.hor[m].priceDiscounted)*Number(this.hor[m].count)
                     }
                 }
             })
@@ -161,11 +161,11 @@ export default {
       localStorage.removeItem(item.id)
       document.getElementById(item.id+'a').style.display = 'none'
       this.len = this.len - item.count
-      this.sum1 = this.sum1 - Number(item.count)*Number(item.price)
+      this.all_sum = this.all_sum - Number(item.count)*Number(item.price)
       if (item.discount == 0) {
-            this.sum = this.sum - Number(item.price)*Number(item.count)
+            this.final_sum = this.final_sum - Number(item.price)*Number(item.count)
       } else {
-            this.sum = this.sum - Number(item.priceDiscounted)*Number(item.count)
+            this.final_sum = this.final_sum - Number(item.priceDiscounted)*Number(item.count)
       }
     },
     plus(item){
@@ -176,13 +176,13 @@ export default {
         this.arrar[item.id - 1].count = m
         localStorage.removeItem(item.id)
         localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
-        this.sum1 = this.sum1 + Number(item.price)
+        this.all_sum = this.all_sum + Number(item.price)
         this.len = this.len + 1
         item.count = Number(item.count) + 1
         if (item.discount == 0) {
-            this.sum = this.sum + Number(item.price)
+            this.final_sum = this.final_sum + Number(item.price)
         } else {
-            this.sum = this.sum + Number(item.priceDiscounted)
+            this.final_sum = this.final_sum + Number(item.priceDiscounted)
         }
       }
     },
@@ -196,12 +196,12 @@ export default {
             this.arrar[item.id - 1].count = m
             localStorage.removeItem(item.id)
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
-            this.sum1 = this.sum1 - Number(item.price)
+            this.all_sum = this.all_sum - Number(item.price)
             item.count = Number(item.count) - 1
             if (item.discount == 0) {
-                this.sum = this.sum - Number(item.price)
+                this.final_sum = this.final_sum - Number(item.price)
             } else {
-                this.sum = this.sum - Number(item.priceDiscounted)
+                this.final_sum = this.final_sum - Number(item.priceDiscounted)
             }
             this.len = this.len - 1     
         }
@@ -232,7 +232,7 @@ export default {
                         this.final_sum -= this.final_sum * coupon_info.discount / 100;
                     }
                     else{
-                        console.log('error');
+                        console.log('error', coupon_info.type);
                     }
                 }
                 this.used_coupon = true;
