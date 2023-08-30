@@ -9,28 +9,28 @@
          <div class="reviews flex flex-col">
             <div class="review flex flex-row h-fit w-full p-9" >
                 <div class="basis-2/3 flex flex-col justify-start p-3">
-                  <div class="font-thin text-3xl">Автор: Стив Хуйс</div>
-                  <div class="mt-1 font-normal text-4xl">еееееебааать ахуеть пиздец нахуй я просто науй в шоке ееебааать кончил блять а еще можно вааааааай бляяяяя</div>
-                  <div class="font-thin text-3xl mt-1">Товар: Хуй</div>
-                  <div class="font-thin text-3xl mt-3">Источник: Я че ебу?</div>
+                  <div class="font-thin text-3xl">Автор: Стив </div>
+                  <div class="mt-1 font-normal text-4xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie, dui id faucibus blandit, felis sapien posuere dui, venenatis feugiat tellus augue suscipit ligula</div>
+                  <div class="font-thin text-3xl mt-1">Товар: Raspberry pi 7-8</div>
+                  <div class="font-thin text-3xl mt-3">Источник: vk</div>
                 </div>
                 <div class="basis-1/3 bg-white w-1/3">02</div>
             </div>
             <div class="review flex flex-row h-fit w-full p-9" >
                 <div class="basis-2/3 flex flex-col justify-start p-3">
-                  <div class="font-thin text-3xl">Автор: Стив Хуйс</div>
-                  <div class="mt-1 font-normal text-4xl">еееееебааать ахуеть пиздец нахуй я просто науй в шоке ееебааать кончил блять а еще можно вааааааай бляяяяя</div>
-                  <div class="font-thin text-3xl mt-1">Товар: Хуй</div>
-                  <div class="font-thin text-3xl mt-3">Источник: Я че ебу?</div>
+                  <div class="font-thin text-3xl">Автор: Стив </div>
+                  <div class="mt-1 font-normal text-4xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie, dui id faucibus blandit, felis sapien posuere dui, venenatis feugiat tellus augue suscipit ligula</div>
+                  <div class="font-thin text-3xl mt-1">Товар: Raspberry pi 7-8</div>
+                  <div class="font-thin text-3xl mt-3">Источник: vk</div>
                 </div>
                 <div class="basis-1/3 bg-white w-1/3">02</div>
             </div>
             <div class="review flex flex-row h-fit w-full p-9" >
                 <div class="basis-2/3 flex flex-col justify-start p-3">
-                  <div class="font-thin text-3xl">Автор: Стив Хуйс</div>
-                  <div class="mt-1 font-normal text-4xl">еееееебааать ахуеть пиздец нахуй я просто науй в шоке ееебааать кончил блять а еще можно вааааааай бляяяяя</div>
-                  <div class="font-thin text-3xl mt-1">Товар: Хуй</div>
-                  <div class="font-thin text-3xl mt-3">Источник: Я че ебу?</div>
+                  <div class="font-thin text-3xl">Автор: Стив </div>
+                  <div class="mt-1 font-normal text-4xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie, dui id faucibus blandit, felis sapien posuere dui, venenatis feugiat tellus augue suscipit ligula</div>
+                  <div class="font-thin text-3xl mt-1">Товар: Raspberry pi 7-8</div>
+                  <div class="font-thin text-3xl mt-3">Источник: vk</div>
                 </div>
                 <div class="basis-1/3 bg-white w-1/3">02</div>
             </div>
