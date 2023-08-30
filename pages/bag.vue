@@ -85,8 +85,9 @@
                         <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required>
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Номер заказа" name="order">
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Описание заказа" name="description">
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name">
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name" required>
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Адрес доставки" name="delivery_address" required>
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email" required>
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone">
                         <input class="text-5xl font-semibold mt-7 mb-0 rounded-full h-7 place" type="submit" value="Оплатить">
                     </form>
@@ -117,6 +118,10 @@ export default {
     }
   },
   mounted(){
+    let paymentScript = document.createElement('script');
+    paymentScript.setAttribute('src', 'https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js');
+    document.head.appendChild(paymentScript);
+
     this.fetchProducts();
   },
   methods: {
@@ -126,7 +131,7 @@ export default {
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
                     this.arrar.push(products[i]);
-                    console.log(this.hor[1]);
+                    // console.log(this.hor[1]);
                     // calculate discount and save if in priceC atrtibute
                     if (products[i].discount != 0) {
                         let priceDiscounted = products[i].price * (100 - products[i].discount) / 100;
@@ -134,13 +139,13 @@ export default {
                         this.arrar[i].priceDiscounted = priceDiscounted;
                     }
 
-                    console.log(this.arrar);
+                    // console.log(this.arrar);
                     this.base = this.arrar[Number(this.$route.params.id) - 1];
                     if (localStorage.getItem(i) == null) {
-                        console.log('ladno');
+                        // console.log('ladno');
+                        // pass
                     } else {
                         this.hor.push(JSON.parse(localStorage.getItem(i)))
-                        
                     }
                     
                 }
@@ -191,7 +196,8 @@ export default {
     minus(item){
         let k = Number(document.getElementById(item.id).innerHTML)
         if (k <= 1) {
-            console.log("Pon");
+            // console.log("Pon");
+            // pass
         } else {
             let m = k - 1
             document.getElementById(item.id).innerHTML = m
@@ -219,10 +225,12 @@ export default {
             .then(coupons => {
                 console.log(coupons);
                 if(coupons.length == 0){
-                    console.log('no such coupon');
+                    // console.log('no such coupon');
+                    // pass
                 }
                 if(coupons.length > 1){
-                    console.log('more than one coupon');
+                    // console.log('more than one coupon');
+                    // pass
                 }
                 else{
                     let coupon_info = coupons[0];
@@ -236,7 +244,8 @@ export default {
                         this.final_sum -= this.final_sum * coupon_info.discount / 100;
                     }
                     else{
-                        console.log('error', coupon_info.type);
+                        // console.log('error', coupon_info.type);
+                        // pass
                     }
                 }
                 this.used_coupon = true;
