@@ -77,18 +77,19 @@
       <div v-else>
         <div class="flex justify-center ">
                 <div class="w-5/6 max-w-[1196px] flex flex-row justify-between">
-                    <form name="payform-tinkoff" onsubmit="pay(this); return false;">
-                    <input class="payform-tinkoff-row" type="hidden" name="terminalkey" value="TinkoffBankTest">
-                    <input class="payform-tinkoff-row" type="hidden" name="frame" value="false">
-                    <input class="payform-tinkoff-row" type="hidden" name="language" value="ru"> 
+                    <form name="payform-tinkoff" @submit="makePayment">
+                        <input class="payform-tinkoff-row" type="hidden" name="terminalkey" value="1693506146087DEMO">
+                        <input class="payform-tinkoff-row" type="hidden" name="frame" value="false">
+                        <input class="payform-tinkoff-row" type="hidden" name="language" value="ru">
+                        <input class="payform-tinkoff-row" type="hidden" name="receipt" value="">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="hidden" name="description" value="Покупка в интернет-магазине default-pi.ru">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="hidden" name="order" >
 
                         <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Номер заказа" name="order">
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Описание заказа" name="description">
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name" required>
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Адрес доставки" name="delivery_address" required>
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone">
+                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone" required>
                         <input class="text-5xl font-semibold mt-7 mb-0 rounded-full h-7 place" type="submit" value="Оплатить">
                     </form>
                 </div>
@@ -114,7 +115,7 @@ export default {
       len: 0,
       all_sum: 0,
       payment: false,
-      used_coupon: false
+      used_coupon: false,
     }
   },
   mounted(){
@@ -149,13 +150,21 @@ export default {
                     }
                     
                 }
+
                 for (let m = 0; m < this.hor.length; m++) {
-                    this.all_sum = this.all_sum + Number(this.hor[m].price)*Number(this.hor[m].count)
+                    if(!this.hor[m].hasOwnProperty('count')){
+                        this.hor[m].count = 1;
+                    }
+
+                    this.all_sum = this.all_sum + Number(this.hor[m].price) * Number(this.hor[m].count)
                     this.len = this.len + Number(this.hor[m].count)
+
+                    this.hor[m].main_photo_url = this.hor[m].photo_url.split(';')[0];
+
                     if (this.hor[m].discount == 0) {
-                        this.final_sum = this.final_sum + Number(this.hor[m].price)*Number(this.hor[m].count)
+                        this.final_sum = this.final_sum + Number(this.hor[m].price) * Number(this.hor[m].count)
                     } else {
-                        this.final_sum = this.final_sum + Number(this.hor[m].priceDiscounted)*Number(this.hor[m].count)
+                        this.final_sum = this.final_sum + Number(this.hor[m].priceDiscounted) * Number(this.hor[m].count)
                     }
                 }
             })
@@ -174,18 +183,20 @@ export default {
       }
     },
     plus(item){
-      let k = document.getElementById(item.id).innerHTML
+      let k = document.getElementById(item.id).innerHTML;
       if (Number(k) < 99) {
         let m = Number(k) + 1
         document.getElementById(item.id).innerHTML = m
-        this.arrar[item.id - 1].count = m
-        this.arrar[item.id - 1].main_photo_url = item.photo_url.split(';')[0]
+
         localStorage.removeItem(item.id)
         localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+
         this.all_sum = this.all_sum + Number(item.price)
         this.len = this.len + 1
+        
         item.count = Number(item.count) + 1
         item.main_photo_url = item.photo_url.split(';')[0]
+
         if (item.discount == 0) {
             this.final_sum = this.final_sum + Number(item.price)
         } else {
@@ -200,12 +211,13 @@ export default {
             // pass
         } else {
             let m = k - 1
-            document.getElementById(item.id).innerHTML = m
-            this.arrar[item.id - 1].count = m
-            this.arrar[item.id - 1].main_photo_url = item.photo_url.split(';')[0]
+            document.getElementById(item.id).innerHTML = m;
+
             localStorage.removeItem(item.id)
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+
             this.all_sum = this.all_sum - Number(item.price)
+
             item.count = Number(item.count) - 1
             item.main_photo_url = item.photo_url.split(';')[0]
             if (item.discount == 0) {
@@ -265,6 +277,70 @@ export default {
                 document.getElementById('order_sum').value = this.final_sum;
             }, 1);
         }
+    },
+    makePayment(e){
+        e.preventDefault();
+
+        let form = e.target;
+        let name = form.description.value || "Оплата";
+        let amount = form.amount.value;
+        let email = form.email.value;
+        let phone = form.phone.value;
+        let delivery_address = form.delivery_address.value;
+
+        let order_id = Date.now();
+        form.order.value = order_id;
+
+        console.log(name, amount, email, phone);
+        if (amount && email && phone) {
+            let item_list = [];
+
+            this.hor.forEach(el => {
+                item_list.push({
+                    "Name": el.name,
+                    "Price": el.price + '00',
+                    "Quantity": el.count,
+                    "Amount": el.price * el.count + '00',
+                    "PaymentMethod": "full_prepayment",
+                    "PaymentObject": "commodity",
+                    "Tax": "vat20"
+                })
+            })
+
+            form.receipt.value = JSON.stringify({
+                "Email": email,
+                "Phone": phone,
+                "EmailCompany": "mail@mail.com",
+                "Taxation": "patent",
+                "Items": item_list,
+            });
+
+            fetch(`${process.env.BASE_URL}/orders/  `, {
+                'method': 'POST',
+                'headers': {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                'body': JSON.stringify({
+                    'order_id': order_id,
+                    'phone_number': phone,
+                    'email': email,
+                    'name': name,
+                    'delivery_address': delivery_address.replaceAll(',', ';'),
+                    'sum': this.final_sum,
+                    'products': this.hor.map(el => {return `${el.name};${el.count}`}).join(' '),
+                    'status': 'Ожидание оплаты'
+                })
+            })
+            .catch(error => console.error(error));
+
+            pay(form);
+        }
+        else{
+            alert("Не все обязательные поля заполнены");
+            // вывести предупреждение
+        }
+
+        return false;
     }
   },
 }
