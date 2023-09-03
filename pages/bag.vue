@@ -67,7 +67,7 @@
                             <div>{{ final_sum.toLocaleString('ru-RU') }} ₽</div>
                         </div>
                     </div>
-                     <input type="text" id="coupon_input" placeholder="Промокод" class="mb-[151px] mt-11 rounded-full h-7 w-full place coupon"> 
+                     <input type="text" id="coupon_input" placeholder="промокод" class="mb-[151px] mt-11 rounded-full h-7 w-full place coupon"> 
                 </div>
             </div>
             </div>
@@ -391,6 +391,6 @@ input::-webkit-input-placeholder{
     user-select: none
 }
 .coupon{
-    text-transform: uppercase;
+    color: black; 
 }
 </style>

@@ -23,8 +23,8 @@
         <div class=" w-5/6 max-w-[1433px]">
           <div class="flex flex-row justify-start ">
             <div class="flex flex-row basis-[55%]">
-              <div class="-mt-4 w-[19%]" style="overflow-y: scroll;">
-                <img class="w-[99%] h-[21%] mt-4 rounded-xl border-2 border-black"
+              <div class="-mt-4 w-[19%] max-h-[471px]" style="overflow-y: scroll; overflow-x:visible;">
+                <img class="w-[81%] h-[100px] mt-4 rounded-xl border-2 border-black "
                   v-for="pic in pictures"
                   :key="pic.id"
                   :src="pic"
