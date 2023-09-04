@@ -19,7 +19,7 @@
             <NuxtLink to="/about" class="text-nav">О нас</NuxtLink>
             <NuxtLink to="/reviews" class="text-nav">Отзывы</NuxtLink>
             <NuxtLink to="/contacts" class="text-nav">Контакты</NuxtLink>
-            <NuxtLink to="/main" class="search"></NuxtLink>
+            <NuxtLink to="/" class="search"></NuxtLink>
             <NuxtLink to="/bag" class="bag"><img src="@/assets/bag.svg" alt=""></NuxtLink>
           </div>  
         </div>

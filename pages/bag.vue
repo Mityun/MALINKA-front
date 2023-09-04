@@ -189,7 +189,9 @@ export default {
         document.getElementById(item.id).innerHTML = m
 
         localStorage.removeItem(item.id)
+        this.arrar[item.id - 1].count = m
         localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+
 
         this.all_sum = this.all_sum + Number(item.price)
         this.len = this.len + 1
@@ -214,7 +216,9 @@ export default {
             document.getElementById(item.id).innerHTML = m;
 
             localStorage.removeItem(item.id)
+            this.arrar[item.id - 1].count = m
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+
 
             this.all_sum = this.all_sum - Number(item.price)
 

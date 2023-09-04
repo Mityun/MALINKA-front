@@ -45,7 +45,7 @@
               <div v-if="okey" style="cursor:pointer;" class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#BC1142] bg-[#BC1142] px-8 py-3 text-2xl font-medium text-white stasik" @click.prevent="cartAdd(base)">Купить</div>
               <div v-else class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#BC1142] bg-white px-8 py-3 text-2xl font-medium text-[#BC1142] " >В корзине</div>
 
-              <div class="rounded-full border-2 border-[#BC1142] grid grid-cols-3 mt-10 h-[60px]">
+              <div class="rounded-full border-2 border-[#BC1142] grid grid-cols-3 mt-10 h-[60px]" style="user-select: none;">
                   <div style="cursor:pointer;" @click="minus(base)" class="flex justify-center items-center p-2" ><img src="@/assets/Line10red.svg" alt=""></div>
                   <div class="p-auto w-auto flex justify-center items-center text-xl font-bold text-[#BC1142]" v-bind:id="base.id">{{base.count}}</div>
                   <div style="cursor:pointer;" @click="plus(base)" class="flex justify-center items-center p-2"><img src="@/assets/Group30red.svg" alt=""></div>
