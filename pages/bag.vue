@@ -78,18 +78,18 @@
         <div class="flex justify-center ">
                 <div class="w-5/6 max-w-[1196px] flex flex-row justify-between">
                     <form name="payform-tinkoff" @submit="makePayment">
-                        <input class="payform-tinkoff-row" type="hidden" name="terminalkey" value="1693506146087DEMO">
+                        <input class="payform-tinkoff-row" type="hidden" name="terminalkey" value="1693506146087">
                         <input class="payform-tinkoff-row" type="hidden" name="frame" value="false">
                         <input class="payform-tinkoff-row" type="hidden" name="language" value="ru">
                         <input class="payform-tinkoff-row" type="hidden" name="receipt" value="">
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="hidden" name="description" value="Покупка в интернет-магазине default-pi.ru">
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="hidden" name="order" >
 
-                        <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Адрес доставки" name="delivery_address" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone" required>
+                        <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required readonly>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name" required>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Адрес доставки" name="delivery_address" required>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email" required>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone" required>
                         <input class="text-5xl font-semibold mt-7 mb-0 rounded-full h-7 place" type="submit" value="Оплатить">
                     </form>
                 </div>
