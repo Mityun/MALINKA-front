@@ -29,7 +29,7 @@
                         <div
                             :style="{
                                 'background-image':
-                                    'url(' + item.photo_url + ')',
+                                    'url(' + item.main_photo_url + ')',
                             }"
                             class="w-full h-64 lll"
                         ></div>
@@ -88,7 +88,6 @@ export default {
             ara: [],
             arrar: [],
             hor: [],
-            patata:1
         };
     },
     methods: {
@@ -98,6 +97,7 @@ export default {
             .then(products => {
                 for (let i = 0; i < products.length; i++) {
                     this.arrar.push(products[i]);
+                    this.arrar[i].main_photo_url = this.arrar[i].photo_url.split(';')[0]
 
                     // calculate discount and save if in priceC atrtibute
                     if (products[i].discount != 0) {
@@ -105,8 +105,7 @@ export default {
                         priceDiscounted = Math.round(priceDiscounted);
                         this.arrar[i].priceDiscounted = priceDiscounted;
                     }
-                   
-                    
+                
                 }
             })
             .catch(error => console.error(error));
@@ -122,13 +121,17 @@ export default {
                     } else {
                         this.hor.push(JSON.parse(localStorage.getItem(i)))
                     }
+                    
+
+
                     for (let c = 0; c < this.hor.length; c++) {
-                        console.log(document.getElementById(this.hor[c].id + 'z'));
                         if(document.getElementById(this.hor[c].id + 'z') != null){
                             document.getElementById(this.hor[c].id + 'z').style.display = 'none'
                             document.getElementById(this.hor[c].id + 'x').style.display = 'block' 
                         }
                     }
+                
+
                 }
             })
             .catch(error => console.error(error));

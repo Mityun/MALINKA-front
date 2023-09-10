@@ -2,15 +2,13 @@
   <section>
     <Navbar />
    
-<div class="mt-28">
-  <div class="pt-6">
-    <nav aria-label="Breadcrumb">
-      <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div
-                class="main2 flex flex-col justify-center text-2xl w-2/3 max-w-[1066px]"
+  <div class="mt-28">
+       <div class="flex justify-center">
+            <div
+                class="main2 flex flex-col justify-center text-2xl w-5/6 max-w-[1433px]"
             >
-                <div class="max-w-[1066px]">
-                    <div class="fl flex flex-row">
+                <div class="w-auto">
+                    <div class="fl flex flex-row max-w-[1433px]" style="white-space: nowrap">
                         <NuxtLink to="/rasb"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/rasb" class="text-[#BC1142]">&nbsp; Raspberry Pi</NuxtLink>
                         &nbsp; / &nbsp;
@@ -20,65 +18,64 @@
                     </div>
                 </div>
             </div>
-      </ol>
-    </nav>
-
-    <!-- Image gallery -->
-    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-      <div class="aspect-h-4 aspect-w-4 hidden overflow-hidden rounded-lg lg:block max-h-[651px]" >
-        <img :src="base.photo_url" alt="Two each of gray, white, and black shirts laying flat." class="h-full w-full object-cover object-center" >
       </div>
-      <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8 max-h-[651px]">
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-          <img :src="base.photo_url" alt="Model wearing plain black basic tee." class="h-full w-full object-cover object-center">
-        </div>
-        <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-          <img :src="base.photo_url" alt="Model wearing plain gray basic tee." class="h-full w-full object-cover object-center">
-        </div>
-      </div>
-    </div>
+      <div class="w-full bg-white min-h-[133px] mt-6 pt-16 pb-16 flex flex-col justify-around items-center rounded-3xl">
+        <div class=" w-5/6 max-w-[1433px]">
+          <div class="flex flex-row justify-start ">
+            <div class="flex flex-row basis-[55%]">
+              <div class="-mt-4 w-[19%] max-h-[471px]" style="overflow-y: scroll; overflow-x:visible;">
+                <img class="w-[81%] h-[100px] mt-4 rounded-xl border-2 border-black "
+                  v-for="pic in pictures"
+                  :key="pic.id"
+                  :src="pic"
+                  :id="pic"
+                  @click.prevent="photo(pic)"
+                >
+              </div>
+              <div :style="{'background-image':'url(' + picture + ')',}" class="lg:h-[51%] xl:h-[99%] w-[81%] min-h-[471px] ml-4 rounded-xl border-2 border-black bg-cover"></div>
+            </div>
+            <div class="flex flex-col ml-4 basis-[45%]">
+              <p class="text-3xl black font-semibold" style="white-space:nowrap"> {{base.name}}</p>
+              <div class="mt-10 flex flex-row">
+                <div class="text-5xl text-black flex flex-row items-end font-semibold" v-if="base.discount != 0">{{Number(base.priceDiscounted).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
+                <div class="text-5xl text-black flex flex-row items-end font-semibold" v-else>{{Number(base.price).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
 
-    <!-- Product info -->
-    <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
-      <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{base.name}}</h1>
-      </div>
+                <div class="text-2xl text-black flex flex-row items-end font-semibold ml-3 opacity-40 line-through" v-if="base.discount != 0">{{Number(base.price).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
+              </div>
+              <div v-if="okey" style="cursor:pointer;" class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#BC1142] bg-[#BC1142] px-8 py-3 text-2xl font-medium text-white stasik" @click.prevent="cartAdd(base)">Купить</div>
+              <div v-else class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#BC1142] bg-white px-8 py-3 text-2xl font-medium text-[#BC1142] " >В корзине</div>
 
-      <!-- Options -->
-      <div class="mt-4 lg:row-span-3 lg:mt-0">
-        <h2 class="sr-only">Product information</h2>
-        <p class="text-3xl tracking-tight text-gray-900 " v-if="base.discount != 0">{{Number(base.priceDiscounted).toLocaleString('ru-RU')}} ₽</p>
-        <p class="text-3xl tracking-tight text-gray-900 " v-else>{{Number(base.price).toLocaleString('ru-RU')}} ₽</p>
-
-        <!-- Reviews -->
-    
-
-        <form class="mt-10">
-          <!-- Colors -->
-
-
-          <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border-2 border-[#BC1142] px-8 py-3 text-base font-medium text-[#BC1142]" @click.prevent="cartAdd(base)">Добавить в корзину</button>
-        </form>
-      </div>
-
-      <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-        <!-- Description and details -->
-        <div>
-          <h3 class="sr-only">Description</h3>
-
-          <div class="space-y-6">
-            <p class="text-base text-gray-900">Orange Pi 5 использует 8-ядерный 64-разрядный процессор Rockchip RK3588S нового поколения, четырехъядерный процессор A76 + четырехъядерный процессор A55, с 8-нм техпроцессом, основной частотой до 2,4 ГГц, встроенный графический процессор ARM Mali-G610, встроенный высокопроизводительный модуль ускорения 3D / 2D изображений, встроенный NPU с вычислительной мощностью 6Tops.
-Orange Pi 5 предоставляет множество интерфейсов, включая выход HDMI, интерфейс GPIO, M.2 PCIe2.0, Type-C, порт Gigabit LAN, 2 * USB2.0, 1 * USB3.0 и т.д.; Он может широко использоваться в планшетах, периферийных вычислениях, искусственном интеллекте, облачных вычислениях, AR / VR, интеллектуальная безопасность, умный дом и другие области, охватывающие различные отрасли искусственного интеллекта.
-Orange Pi 5 поддерживает Orange Pious (Дроид), официальную операционную систему, разработанную Orange Pi, а также Android 12 и Debian11</p>
+              <div class="rounded-full border-2 border-[#BC1142] grid grid-cols-3 mt-10 h-[60px]" style="user-select: none;">
+                  <div style="cursor:pointer;" @click="minus(base)" class="flex justify-center items-center p-2" ><img src="@/assets/Line10red.svg" alt=""></div>
+                  <div class="p-auto w-auto flex justify-center items-center text-xl font-bold text-[#BC1142]" v-bind:id="base.id">{{base.count}}</div>
+                  <div style="cursor:pointer;" @click="plus(base)" class="flex justify-center items-center p-2"><img src="@/assets/Group30red.svg" alt=""></div>
+              </div>
+            </div>
+          </div>
+          <div class="text-4xl text-black flex flex-row items-end font-semibold mt-10">Описание</div>
+          <div class="text-xl text-black flex flex-row items-end font-[400] mt-10">{{base.description}} </div>
+          <div class="text-4xl text-black flex flex-row items-end font-semibold mt-10">Характеристики</div>
+          <div class="flex mt-10 text-3xl font-[400]">
+            <div class="basis-1/2 flex flex-col">
+              <div class="flex flex-row items-center"
+                 v-for="one in name_technical_specifications"
+                :key="one.id"
+              >{{one}} <div class="w-full ml-2 bor"></div> </div>
+            </div>
+            <div class="basis-1/2 flex flex-col justify-start opacity-80">
+              <div class="ml-2 text-2xl mt-[4px]"
+                 v-for="two in technical_specifications"
+                :key="two.id"
+              >{{two}}</div>
+              
+            </div>
           </div>
         </div>
-
       </div>
     </div>
+    <div class="-mt-96">
+      <Under />
     </div>
-    </div>
-
-    <Under />
   </section>
 </template>
 
@@ -94,7 +91,14 @@ export default {
     data() {
         return {
             arrar: [],
-            base: {}
+            base: {},
+            pictures:[],
+            prome: [],
+            technical_specifications: [],
+            name_technical_specifications: [],
+            picture: "",
+            hor:[],
+            okey: true,
         };
     },
     methods: {
@@ -111,17 +115,74 @@ export default {
                         priceDiscounted = Math.round(priceDiscounted);
                         this.arrar[i].priceDiscounted = priceDiscounted;
                     }
-
-                    console.log(this.arrar);
                     this.base = this.arrar[Number(this.$route.params.id) - 1];
+
+                    if (localStorage.getItem(i) != null) {
+                      this.hor.push(JSON.parse(localStorage.getItem(i)))     
+                    } 
+
                 }
+                
+                if (localStorage.getItem(this.base.id) == null) {
+                  this.base.count = 1;
+                } 
+                else{
+                  this.base.count = JSON.parse(localStorage.getItem(this.base.id)).count
+                }
+                this.picture = this.arrar[Number(this.$route.params.id) - 1].photo_url.split(";")[0]
+                this.pictures = this.base.photo_url.split(';')
+                
+                this.prome = this.base.technical_specifications.split(';');
+
+                for (let v = 0; v < this.prome.length; v++) {
+                  let ladnoOkey = this.prome[v].split(':');
+                  this.name_technical_specifications.push(ladnoOkey[0])
+                  this.technical_specifications.push(ladnoOkey[1])
+                }
+
+                if (localStorage.getItem(this.base.id) != null) {
+                  this.okey = false
+                }
+               
             })
             .catch(error => console.error(error));
         },
         cartAdd(base) {
-            this.base.count = 1
             console.log(this.base);
+            this.base.main_photo_url = this.pictures[0]
             localStorage.setItem(base.id, JSON.stringify(base));
+            this.okey = false
+        },
+        plus(base){
+          this.base.main_photo_url = this.pictures[0]
+          let k = Number(document.getElementById(base.id).innerHTML)
+          if (Number(k) < 99) {
+            document.getElementById(base.id).innerHTML = k + 1
+            this.base.count = this.base.count + 1
+            if (localStorage.getItem(this.base.id) != null) {
+      
+                localStorage.removeItem(base.id)
+                localStorage.setItem(base.id, JSON.stringify(base));
+            }
+          }
+        },
+        minus(base){
+          this.base.main_photo_url = this.pictures[0]
+          let k = Number(document.getElementById(base.id).innerHTML)
+          if (k <= 1) {
+            console.log("Pon");
+          } else {
+            document.getElementById(base.id).innerHTML = k - 1
+            this.base.count = this.base.count - 1   
+            if (localStorage.getItem(this.base.id) != null) {
+                localStorage.removeItem(base.id)
+                localStorage.setItem(base.id, JSON.stringify(base));
+            }
+          }
+        },
+        photo(pic){
+          this.picture = pic
+         console.log(document.getElementById(this.base.id+'a'))
         }
     },
     mounted() {
@@ -130,6 +191,12 @@ export default {
 };
 </script>
 
-<style>
 
+<style>
+.ladnobut{
+    user-select: none
+}
+.bor{
+  border-bottom: 1px black dashed;
+}
 </style>

@@ -67,7 +67,7 @@
                             <div>{{ final_sum.toLocaleString('ru-RU') }} ₽</div>
                         </div>
                     </div>
-                     <input type="text" id="coupon_input" placeholder="Промокод" class="mb-[151px] mt-11 rounded-full h-7 w-full place coupon"> 
+                     <input type="text" id="coupon_input" placeholder="промокод" class="mb-[151px] mt-11 rounded-full h-7 w-full place coupon"> 
                 </div>
             </div>
             </div>
@@ -189,7 +189,9 @@ export default {
         document.getElementById(item.id).innerHTML = m
 
         localStorage.removeItem(item.id)
+        this.arrar[item.id - 1].count = m
         localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+
 
         this.all_sum = this.all_sum + Number(item.price)
         this.len = this.len + 1
@@ -214,7 +216,9 @@ export default {
             document.getElementById(item.id).innerHTML = m;
 
             localStorage.removeItem(item.id)
+            this.arrar[item.id - 1].count = m
             localStorage.setItem(item.id, JSON.stringify(this.arrar[item.id - 1]));
+
 
             this.all_sum = this.all_sum - Number(item.price)
 
@@ -391,6 +395,6 @@ input::-webkit-input-placeholder{
     user-select: none
 }
 .coupon{
-    text-transform: uppercase;
+    color: black; 
 }
 </style>
