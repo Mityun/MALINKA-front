@@ -74,7 +74,7 @@
         </div>
         <div class="basis-1/2 flex flex-col">
           <div class="w-full h-full p-2">
-            <div class="w-full h-full bg-[#D9D9D9] backdrop-opacity-100"></div>
+            <img src="@/assets/map.jpg" class="w-full h-full backdrop-opacity-100" alt="">
           </div>
           <NuxtLink to="/about" class="z-10">
             <div
@@ -185,5 +185,10 @@ body {
 }
 .but{
   white-space: nowrap;
+}
+.map{
+  background: url("../assets/map.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 </style>

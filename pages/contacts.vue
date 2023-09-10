@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="h-36 border-[2px] border-[black] rounded-[50px] flex flex-col justify-around p-5 mt-5 items-center w-1/4" >
-                    <a class="font-semibold text-4xl" href="https://www.stas.com/">Мы в VK</a>
+                    <a class="font-semibold text-4xl" href="https://vk.com/makers_dafault/">Мы в VK</a>
                 </div>
             </div>
         </div>

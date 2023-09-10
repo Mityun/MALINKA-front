@@ -13,7 +13,7 @@
                   <NuxtLink to="/contacts" class="text-2xl font-extralight">Контакты</NuxtLink>
                   <NuxtLink to="/contacts" class="text-lg mt-1 font-thin">Для Юр. лиц</NuxtLink>
                   <NuxtLink to="/contacts" class="text-lg font-thin">Для Физ. лиц</NuxtLink>
-                  <NuxtLink to="/contacts" class="text-lg font-thin">мы в vk</NuxtLink>
+                  <a href="https://vk.com/makers_dafault" class="text-lg font-thin">мы в vk</a>
               </div>
               <NuxtLink to="/about" class="flex flex-col items-center justify-start text-2xl font-extralight basis-1/6 h-2/3 mar">О нас</NuxtLink>
               <NuxtLink to="/reviews" class="flex flex-col items-center justify-start text-2xl font-extralight basis-1/6 h-2/3 mar">Отзывы</NuxtLink>
