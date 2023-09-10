@@ -78,7 +78,7 @@
         <div class="flex justify-center ">
                 <div class="w-5/6 max-w-[1196px] flex flex-row justify-between">
                     <form name="payform-tinkoff" @submit="makePayment">
-                        <input class="payform-tinkoff-row" type="hidden" name="terminalkey" value="1693506146087DEMO">
+                        <input class="payform-tinkoff-row" type="hidden" name="terminalkey" value="1693506146087">
                         <input class="payform-tinkoff-row" type="hidden" name="frame" value="false">
                         <input class="payform-tinkoff-row" type="hidden" name="language" value="ru">
                         <input class="payform-tinkoff-row" type="hidden" name="receipt" value="">
