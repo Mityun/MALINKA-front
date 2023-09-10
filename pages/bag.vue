@@ -85,11 +85,11 @@
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="hidden" name="description" value="Покупка в интернет-магазине default-pi.ru">
                         <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="hidden" name="order" >
 
-                        <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Адрес доставки" name="delivery_address" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email" required>
-                        <input class="mt-1 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone" required>
+                        <input class="mt-11 mb-0 rounded-full h-7 w-full place" id="order_sum" type="text" placeholder="Сумма заказа" name="amount" required readonly>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="ФИО плательщика" name="name" required>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Адрес доставки" name="delivery_address" required>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="E-mail" name="email" required>
+                        <input class="mt-3 mb-0 rounded-full h-7 w-full place" type="text" placeholder="Контактный телефон" name="phone" required>
                         <input class="text-5xl font-semibold mt-7 mb-0 rounded-full h-7 place" type="submit" value="Оплатить">
                     </form>
                 </div>
