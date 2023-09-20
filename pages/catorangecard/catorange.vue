@@ -3,9 +3,9 @@
         <Navbar />
         <div class="flex justify-center">
             <div
-                class="main2 flex flex-col justify-center mt-28 text-2xl w-2/3 max-w-[1066px]"
+                class="main2 flex flex-col justify-center mt-28 text-2xl w-2/3 max-w-[946px]"
             >
-                <div class="w-2/3 max-w-[1066px]">
+                <div class="w-2/3 max-w-[946px]">
                     <div class="fl flex flex-row">
                         <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
                         <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
@@ -15,24 +15,29 @@
                 </div>
             </div>
         </div>
-        <img src="@/assets/Ellipse22.svg" width="100%" alt="" class="pic1" />
         <div class="flex justify-center">
-            <div class="w-2/3 justify-center items-center mt-6 max-w-[1066px]">
+            <img src="@/assets/Ellipse22.svg" width="100%" alt="" class="pic1 max-w-[1466px]" />
+        </div>
+        <div class="flex justify-center">
+            <div class="w-2/3 justify-center items-center mt-6 max-w-[946px]">
                 <div class="grid grid-cols-3 gap-4">
                     <div
                         v-for="item in arrar"
                         :key="item.id"
-                        class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[350px] h-[474px]"
+                        class="w-full card flex flex-col justify-between bg-white p-3 rounded-3xl backdrop-opacity-100 max-w-[306px] h-[474px]"
                 
                     >
                     <div class="absolute w-full h-full z-10" @click.prevent="openUser(item)"></div>
-                        <div
-                            :style="{
-                                'background-image':
-                                    'url(' + item.main_photo_url + ')',
-                            }"
-                            class="w-full h-64 lll"
-                        ></div>
+                        <div class="w-full h-full flex justify-center">
+                            <div
+                                :style="{
+                                    'background-image':
+                                        'url(' + item.main_photo_url + ')',
+                                }"
+                                class="lg:w-56 lg:h-56 xl:w-full xl:h-[90%] lll"
+                            ></div>
+                        </div>
+                        
                         <div class="flex flex-row justify-between p-1">
                            <div class="ml-[13px]">
                                 <div class="text-lg text-[#D2D2D2] line-through" v-if="item.discount != 0">{{Number(item.price).toLocaleString('ru-RU')}} ₽</div>

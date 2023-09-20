@@ -56,13 +56,13 @@
           <div class="text-xl text-black flex flex-row items-end font-[400] mt-10">{{base.description}} </div>
           <div class="text-4xl text-black flex flex-row items-end font-semibold mt-10">Характеристики</div>
           <div class="flex mt-10 text-3xl font-[400]">
-            <div class="basis-1/2 flex flex-col">
-              <div class="flex flex-row items-center"
+            <div class="basis-5/6 flex flex-col ">
+              <div class="flex flex-row items-center whitespace-nowrap"
                  v-for="one in name_technical_specifications"
                 :key="one.id"
               >{{one}} <div class="w-full ml-2 bor"></div> </div>
             </div>
-            <div class="basis-1/2 flex flex-col justify-start opacity-80">
+            <div class="basis-1/6 flex flex-col justify-start opacity-80">
               <div class="ml-2 text-2xl mt-[4px]"
                  v-for="two in technical_specifications"
                 :key="two.id"

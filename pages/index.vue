@@ -160,9 +160,7 @@ export default {
 
   mounted(){
     if (window.innerWidth < 1211) {
-      this.$router.push('/hah')
-    } else {
-      console.log('stanislav');
+      this.$router.push('/errorScreen')
     }
   }
 }
