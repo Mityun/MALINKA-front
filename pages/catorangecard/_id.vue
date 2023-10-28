@@ -1,73 +1,162 @@
 <template>
   <section>
     <Navbar />
-   
-  <div class="mt-28">
-       <div class="flex justify-center">
+
+    <div class="mt-28">
+      <div class="flex justify-center">
+        <div
+          class="main2 flex w-5/6 max-w-[1433px] flex-col justify-center text-2xl"
+        >
+          <div class="w-auto">
             <div
-                class="main2 flex flex-col justify-center text-2xl w-5/6 max-w-[1433px]"
+              class="fl flex max-w-[1433px] flex-row"
+              style="white-space: nowrap"
             >
-                <div class="w-auto">
-                    <div class="fl flex flex-row max-w-[1433px]" style="white-space: nowrap">
-                       <NuxtLink to="/orange"> Каталог &nbsp;/ </NuxtLink>
-                        <NuxtLink to="/orange" class="text-[#EA7102]">&nbsp; Orange pi</NuxtLink>
-                        &nbsp; / &nbsp;
-                        <NuxtLink class="text-[#EA7102]" to="/catorangecard/catorange">Orange pi 4</NuxtLink>
-                        &nbsp; / &nbsp;
-                        <div class="text-[#EA7102]" >{{base.name}}</div>
-                    </div>
-                </div>
+              <NuxtLink to="/orange">Каталог &nbsp;/</NuxtLink>
+              <NuxtLink to="/orange" class="text-[#EA7102]">
+                &nbsp; Orange pi
+              </NuxtLink>
+              &nbsp; / &nbsp;
+              <NuxtLink class="text-[#EA7102]" to="/catorangecard/catorange">
+                Orange pi 4
+              </NuxtLink>
+              &nbsp; / &nbsp;
+              <div class="text-[#EA7102]">{{ base.name }}</div>
             </div>
+          </div>
+        </div>
       </div>
-      <div class="w-full bg-white min-h-[133px] mt-6 pt-16 pb-16 flex flex-col justify-around items-center rounded-3xl">
-        <div class=" w-5/6 max-w-[1433px]">
-          <div class="flex flex-row justify-start ">
-            <div class="flex flex-row basis-[55%]">
-              <div class="-mt-4 w-[19%] max-h-[471px]" style="overflow-y: scroll; overflow-x:visible;">
-                <img class="w-[81%] h-[100px] mt-4 rounded-xl border-2 border-black "
+      <div
+        class="mt-6 flex min-h-[133px] w-full flex-col items-center justify-around rounded-3xl bg-white pb-16 pt-16"
+      >
+        <div class="w-5/6 max-w-[1433px]">
+          <div class="flex flex-row justify-start">
+            <div class="flex basis-[55%] flex-row">
+              <div
+                class="-mt-4 max-h-[471px] w-[19%]"
+                style="overflow-y: scroll; overflow-x: visible"
+              >
+                <img
                   v-for="pic in pictures"
-                  :key="pic.id"
-                  :src="pic"
                   :id="pic"
+                  :key="pic.id"
+                  class="mt-4 h-[100px] w-[81%] rounded-xl border-2 border-black"
+                  :src="pic"
                   @click.prevent="photo(pic)"
-                >
+                />
               </div>
-              <div :style="{'background-image':'url(' + picture + ')',}" class="lg:h-[51%] xl:h-[99%] w-[81%] min-h-[471px] ml-4 rounded-xl border-2 border-black bg-cover"></div>
+              <div
+                :style="{ 'background-image': 'url(' + picture + ')' }"
+                class="ml-4 min-h-[471px] w-[81%] rounded-xl border-2 border-black bg-cover xl:h-[99%] lg:h-[51%]"
+              ></div>
             </div>
-            <div class="flex flex-col ml-4 basis-[45%]">
-              <p class="text-3xl black font-semibold" style="white-space:nowrap"> {{base.name}}</p>
+            <div class="ml-4 flex basis-[45%] flex-col">
+              <p
+                class="black text-3xl font-semibold"
+                style="white-space: nowrap"
+              >
+                {{ base.name }}
+              </p>
               <div class="mt-10 flex flex-row">
-                <div class="text-5xl text-black flex flex-row items-end font-semibold" v-if="base.discount != 0">{{Number(base.priceDiscounted).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
-                <div class="text-5xl text-black flex flex-row items-end font-semibold" v-else>{{Number(base.price).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
+                <div
+                  v-if="base.discount != 0"
+                  class="flex flex-row items-end text-5xl font-semibold text-black"
+                >
+                  {{ Number(base.priceDiscounted).toLocaleString('ru-RU') }}
+                  <p class="ml-1 text-xl">₽</p>
+                </div>
+                <div
+                  v-else
+                  class="flex flex-row items-end text-5xl font-semibold text-black"
+                >
+                  {{ Number(base.price).toLocaleString('ru-RU') }}
+                  <p class="ml-1 text-xl">₽</p>
+                </div>
 
-                <div class="text-2xl text-black flex flex-row items-end font-semibold ml-3 opacity-40 line-through" v-if="base.discount != 0">{{Number(base.price).toLocaleString('ru-RU')}} <p class="text-xl ml-1">₽</p></div>
+                <div
+                  v-if="base.discount != 0"
+                  class="ml-3 flex flex-row items-end text-2xl font-semibold text-black line-through opacity-40"
+                >
+                  {{ Number(base.price).toLocaleString('ru-RU') }}
+                  <p class="ml-1 text-xl">₽</p>
+                </div>
               </div>
-              <div v-if="okey" style="cursor:pointer;" class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#EA7102] bg-[#EA7102] px-8 py-3 text-2xl font-medium text-white stasik" @click.prevent="cartAdd(base)">Купить</div>
-              <div v-else class="h-[60px] mt-10 flex w-full items-center justify-center rounded-[100px] border-2 border-[#EA7102] bg-white px-8 py-3 text-2xl font-medium text-[#EA7102] " >В корзине</div>
+              <div
+                v-if="okey"
+                style="cursor: pointer"
+                class="stasik mt-10 flex h-[60px] w-full items-center justify-center rounded-[100px] border-2 border-[#EA7102] bg-[#EA7102] px-8 py-3 text-2xl font-medium text-white"
+                @click.prevent="cartAdd(base)"
+              >
+                Купить
+              </div>
+              <div
+                v-else
+                class="mt-10 flex h-[60px] w-full items-center justify-center rounded-[100px] border-2 border-[#EA7102] bg-white px-8 py-3 text-2xl font-medium text-[#EA7102]"
+              >
+                В корзине
+              </div>
 
-              <div class="rounded-full border-2 border-[#EA7102] grid grid-cols-3 mt-10 h-[60px]" style="user-select: none;">
-                  <div style="cursor:pointer;" @click="minus(base)" class="flex justify-center items-center p-2" ><img src="@/assets/Line10orange.svg" alt=""></div>
-                  <div class="p-auto w-auto flex justify-center items-center text-xl font-bold text-[#EA7102]" v-bind:id="base.id">{{base.count}}</div>
-                  <div style="cursor:pointer;" @click="plus(base)" class="flex justify-center items-center p-2"><img src="@/assets/Group30orange.svg" alt=""></div>
+              <div
+                class="mt-10 grid h-[60px] grid-cols-3 rounded-full border-2 border-[#EA7102]"
+                style="user-select: none"
+              >
+                <div
+                  style="cursor: pointer"
+                  class="flex items-center justify-center p-2"
+                  @click="minus(base)"
+                >
+                  <img src="@/assets/Line10orange.svg" alt="" />
+                </div>
+                <div
+                  :id="base.id"
+                  class="p-auto flex w-auto items-center justify-center text-xl font-bold text-[#EA7102]"
+                >
+                  {{ base.count }}
+                </div>
+                <div
+                  style="cursor: pointer"
+                  class="flex items-center justify-center p-2"
+                  @click="plus(base)"
+                >
+                  <img src="@/assets/Group30orange.svg" alt="" />
+                </div>
               </div>
             </div>
           </div>
-          <div class="text-4xl text-black flex flex-row items-end font-semibold mt-10">Описание</div>
-          <div class="text-xl text-black flex flex-row items-end font-[400] mt-10">{{base.description}} </div>
-          <div class="text-4xl text-black flex flex-row items-end font-semibold mt-10">Характеристики</div>
-          <div class="flex mt-10 text-3xl font-[400]">
-            <div class="basis-5/6 flex flex-col ">
-              <div class="flex flex-row items-center whitespace-nowrap"
-                 v-for="one in name_technical_specifications"
+          <div
+            class="mt-10 flex flex-row items-end text-4xl font-semibold text-black"
+          >
+            Описание
+          </div>
+          <div
+            class="mt-10 flex flex-row items-end text-xl font-[400] text-black"
+          >
+            {{ base.description }}
+          </div>
+          <div
+            class="mt-10 flex flex-row items-end text-4xl font-semibold text-black"
+          >
+            Характеристики
+          </div>
+          <div class="mt-10 flex text-3xl font-[400]">
+            <div class="flex basis-5/6 flex-col">
+              <div
+                v-for="one in name_technical_specifications"
                 :key="one.id"
-              >{{one}} <div class="w-full ml-2 bor"></div> </div>
+                class="flex flex-row items-center whitespace-nowrap"
+              >
+                {{ one }}
+                <div class="bor ml-2 w-full"></div>
+              </div>
             </div>
-            <div class="basis-1/6 flex flex-col justify-start opacity-80">
-              <div class="ml-2 text-2xl mt-[4px]"
-                 v-for="two in technical_specifications"
+            <div class="flex basis-1/6 flex-col justify-start opacity-80">
+              <div
+                v-for="two in technical_specifications"
                 :key="two.id"
-              >{{two}}</div>
-              
+                class="ml-2 mt-[4px] text-2xl"
+              >
+                {{ two }}
+              </div>
             </div>
           </div>
         </div>
@@ -80,123 +169,124 @@
 </template>
 
 <script>
-import Under from "@/components/Under.vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from '@/components/Navbar.vue'
+import Under from '@/components/Under.vue'
 
 export default {
-    components: {
-        Navbar,
-        Under,
-    },
-    data() {
-        return {
-            arrar: [],
-            base: {},
-            pictures:[],
-            prome: [],
-            technical_specifications: [],
-            name_technical_specifications: [],
-            picture: "",
-            hor:[],
-            okey: true,
-        };
-    },
-    methods: {
-        fetchProducts() {
-            fetch(`${process.env.BASE_URL}/products`)
-            .then(response => response.json())
-            .then(products => {
-                for (let i = 0; i < products.length; i++) {
-                    this.arrar.push(products[i]);
+  components: {
+    Navbar,
+    Under
+  },
+  data() {
+    return {
+      arrar: [],
+      base: {},
+      pictures: [],
+      prome: [],
+      technical_specifications: [],
+      name_technical_specifications: [],
+      picture: '',
+      hor: [],
+      okey: true
+    }
+  },
+  mounted() {
+    this.fetchProducts()
+  },
+  methods: {
+    fetchProducts() {
+      fetch(`${process.env.BASE_URL}/products`)
+        .then(response => response.json())
+        .then(products => {
+          for (let i = 0; i < products.length; i++) {
+            this.arrar.push(products[i])
 
-                    // calculate discount and save if in priceC atrtibute
-                    if (products[i].discount != 0) {
-                        let priceDiscounted = products[i].price * (100 - products[i].discount) / 100;
-                        priceDiscounted = Math.round(priceDiscounted);
-                        this.arrar[i].priceDiscounted = priceDiscounted;
-                    }
-                    this.base = this.arrar[Number(this.$route.params.id) - 1];
+            // calculate discount and save if in priceC atrtibute
+            if (products[i].discount != 0) {
+              let priceDiscounted =
+                (products[i].price * (100 - products[i].discount)) / 100
+              priceDiscounted = Math.round(priceDiscounted)
+              this.arrar[i].priceDiscounted = priceDiscounted
+            }
+            this.base = this.arrar[Number(this.$route.params.id) - 1]
 
-                    if (localStorage.getItem(i) != null) {
-                      this.hor.push(JSON.parse(localStorage.getItem(i)))     
-                    } 
-
-                }
-                
-                if (localStorage.getItem(this.base.id) == null) {
-                  this.base.count = 1;
-                } 
-                else{
-                  this.base.count = JSON.parse(localStorage.getItem(this.base.id)).count
-                }
-                this.picture = this.arrar[Number(this.$route.params.id) - 1].photo_url.split(";")[0]
-                this.pictures = this.base.photo_url.split(';')
-                
-                this.prome = this.base.technical_specifications.split(';');
-
-                for (let v = 0; v < this.prome.length; v++) {
-                  let ladnoOkey = this.prome[v].split(':');
-                  this.name_technical_specifications.push(ladnoOkey[0])
-                  this.technical_specifications.push(ladnoOkey[1])
-                }
-
-                if (localStorage.getItem(this.base.id) != null) {
-                  this.okey = false
-                }
-               
-            })
-            .catch(error => console.error(error));
-        },
-        cartAdd(base) {
-            console.log(this.base);
-            this.base.main_photo_url = this.pictures[0]
-            localStorage.setItem(base.id, JSON.stringify(base));
-            this.okey = false
-        },
-        plus(base){
-          this.base.main_photo_url = this.pictures[0]
-          let k = Number(document.getElementById(base.id).innerHTML)
-          if (Number(k) < 99) {
-            document.getElementById(base.id).innerHTML = k + 1
-            this.base.count = this.base.count + 1
-            if (localStorage.getItem(this.base.id) != null) {
-      
-                localStorage.removeItem(base.id)
-                localStorage.setItem(base.id, JSON.stringify(base));
+            if (localStorage.getItem(i) != null) {
+              this.hor.push(JSON.parse(localStorage.getItem(i)))
             }
           }
-        },
-        minus(base){
-          this.base.main_photo_url = this.pictures[0]
-          let k = Number(document.getElementById(base.id).innerHTML)
-          if (k <= 1) {
-            console.log("Pon");
+
+          if (localStorage.getItem(this.base.id) == null) {
+            this.base.count = 1
           } else {
-            document.getElementById(base.id).innerHTML = k - 1
-            this.base.count = this.base.count - 1   
-            if (localStorage.getItem(this.base.id) != null) {
-                localStorage.removeItem(base.id)
-                localStorage.setItem(base.id, JSON.stringify(base));
-            }
+            this.base.count = JSON.parse(
+              localStorage.getItem(this.base.id)
+            ).count
           }
-        },
-        photo(pic){
-          this.picture = pic
-         console.log(document.getElementById(this.base.id+'a'))
+          this.picture =
+            this.arrar[Number(this.$route.params.id) - 1].photo_url.split(
+              ';'
+            )[0]
+          this.pictures = this.base.photo_url.split(';')
+
+          this.prome = this.base.technical_specifications.split(';')
+
+          for (let v = 0; v < this.prome.length; v++) {
+            const ladnoOkey = this.prome[v].split(':')
+            this.name_technical_specifications.push(ladnoOkey[0])
+            this.technical_specifications.push(ladnoOkey[1])
+          }
+
+          if (localStorage.getItem(this.base.id) != null) {
+            this.okey = false
+          }
+        })
+        .catch(error => console.error(error))
+    },
+    cartAdd(base) {
+      console.log(this.base)
+      this.base.main_photo_url = this.pictures[0]
+      localStorage.setItem(base.id, JSON.stringify(base))
+      this.okey = false
+    },
+    plus(base) {
+      this.base.main_photo_url = this.pictures[0]
+      const k = Number(document.getElementById(base.id).innerHTML)
+      if (Number(k) < 99) {
+        document.getElementById(base.id).innerHTML = k + 1
+        this.base.count = this.base.count + 1
+        if (localStorage.getItem(this.base.id) != null) {
+          localStorage.removeItem(base.id)
+          localStorage.setItem(base.id, JSON.stringify(base))
         }
+      }
     },
-    mounted() {
-        this.fetchProducts();
+    minus(base) {
+      this.base.main_photo_url = this.pictures[0]
+      const k = Number(document.getElementById(base.id).innerHTML)
+      if (k <= 1) {
+        console.log('Pon')
+      } else {
+        document.getElementById(base.id).innerHTML = k - 1
+        this.base.count = this.base.count - 1
+        if (localStorage.getItem(this.base.id) != null) {
+          localStorage.removeItem(base.id)
+          localStorage.setItem(base.id, JSON.stringify(base))
+        }
+      }
     },
-};
+    photo(pic) {
+      this.picture = pic
+      console.log(document.getElementById(this.base.id + 'a'))
+    }
+  }
+}
 </script>
 
-
 <style>
-.ladnobut{
-    user-select: none
+.ladnobut {
+  user-select: none;
 }
-.bor{
+.bor {
   border-bottom: 1px black dashed;
 }
 </style>

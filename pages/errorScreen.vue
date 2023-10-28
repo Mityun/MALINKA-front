@@ -1,15 +1,14 @@
 <template>
-    <section>
-        <div class="flex justify-center font-bold text-2xl mt-56"> Сайт в нынешний момент времени не поддерживет смартфоны. Пожалуйста, зайте с пк</div>
-    </section>
+  <section>
+    <div class="mt-56 flex justify-center text-2xl font-bold">
+      Сайт в нынешний момент времени не поддерживет смартфоны. Пожалуйста, зайте
+      с пк
+    </div>
+  </section>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
-<style>
-
-</style>
+<style></style>
