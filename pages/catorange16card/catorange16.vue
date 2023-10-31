@@ -5,8 +5,8 @@
       <div
         class="main2 mt-28 flex w-2/3 max-w-[946px] flex-col justify-center text-2xl"
       >
-        <div class="w-2/3 max-w-[946px]">
-          <div class="fl flex flex-row">
+        <div class="w-2/3 max-w-[946px] md:w-full">
+          <div class="fl flex flex-row md:flex-wrap">
             <NuxtLink to="/orange">Каталог &nbsp;/</NuxtLink>
             <NuxtLink to="/orange" class="text-[#EA7102]">
               &nbsp; Orange pi
@@ -25,11 +25,11 @@
     />
     <div class="flex justify-center">
       <div class="mt-6 w-2/3 max-w-[946px] items-center justify-center">
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4 md:grid-cols-1">
           <div
             v-for="item in arrar"
             :key="item.id"
-            class="card flex h-[474px] w-full max-w-[306px] flex-col justify-between rounded-3xl bg-white p-3 backdrop-opacity-100"
+            class="card flex h-[474px] w-full max-w-[306px] flex-col justify-between rounded-3xl bg-white p-3 backdrop-opacity-100 md:h-[500px] md:max-w-full"
           >
             <div
               class="absolute z-10 h-full w-full"

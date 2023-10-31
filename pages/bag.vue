@@ -14,23 +14,27 @@
                   v-for="item in hor"
                   :id="item.id + 'a'"
                   :key="item.id"
-                  class="bl mt-9 flex h-44 w-[96%] flex-row justify-between"
+                  class="bl md:h-34 mt-9 flex h-44 w-[96%] flex-row justify-between md:mt-5"
                 >
-                  <div class="flex basis-2/3 flex-col justify-between">
-                    <div class="relative min-w-full text-3xl font-medium">
+                  <div
+                    class="flex basis-2/3 flex-col justify-between md:w-[calc(100%-40px)] md:basis-auto"
+                  >
+                    <div
+                      class="relative min-w-full text-3xl font-medium md:text-xl"
+                    >
                       {{ item.name }}
                     </div>
                     <div class="flex flex-row items-center justify-between">
                       <div
                         v-if="item.discount != 0"
-                        class="card flex flex-row items-end justify-end text-5xl font-semibold"
+                        class="card flex flex-row items-end justify-end text-5xl font-semibold md:text-xl"
                       >
                         {{ item.priceDiscounted.toLocaleString('ru-RU') }}
                         <div class="ml-3 text-2xl">₽</div>
                       </div>
                       <div
                         v-else
-                        class="card flex flex-row items-end justify-end text-5xl font-semibold"
+                        class="card flex flex-row items-end justify-end text-5xl font-semibold md:text-xl"
                       >
                         {{ item.price.toLocaleString('ru-RU') }}
                         <div class="ml-3 text-2xl">₽</div>
@@ -70,7 +74,7 @@
                     </div>
                   </div>
                   <div
-                    class="card flex basis-1/3 items-baseline justify-end rounded-2xl"
+                    class="card flex basis-1/3 items-baseline justify-end rounded-2xl md:w-[40px] md:basis-auto"
                     :style="{
                       'background-image': 'url(' + item.main_photo_url + ')'
                     }"
@@ -83,14 +87,16 @@
               </div>
             </div>
           </div>
-          <div class="pri mt-28 flex w-[48%] flex-col items-center md:w-full">
+          <div
+            class="pri mt-28 flex w-[48%] flex-col items-center md:mt-8 md:w-full"
+          >
             <div
               style="
                 cursor: pointer;
                 border: 2px solid black;
                 border-radius: 100px;
               "
-              class="mt-6 flex w-[90%] items-center justify-center p-4 md:mt-4 md:p-1"
+              class="mt-6 flex w-[90%] items-center justify-center p-4 md:mt-4 md:w-[80%] md:p-1"
             >
               <div class="text-5xl font-semibold md:text-2xl" @click="order">
                 Оформить заказ
@@ -493,6 +499,8 @@ export default {
 .bl {
   border-bottom: 1px black solid;
   padding-bottom: 36px;
+
+  @apply md:pb-4;
 }
 .card {
   background-size: cover;
@@ -526,6 +534,7 @@ input::-webkit-input-placeholder {
 .allCards {
   max-height: 850px;
   overflow-y: scroll;
+  @apply md:overflow-y-auto;
 }
 .ladnobut {
   user-select: none;

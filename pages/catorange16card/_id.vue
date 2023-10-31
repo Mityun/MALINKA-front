@@ -9,7 +9,7 @@
         >
           <div class="w-auto">
             <div
-              class="fl flex max-w-[1433px] flex-row"
+              class="fl flex max-w-[1433px] flex-row md:flex-wrap"
               style="white-space: nowrap"
             >
               <NuxtLink to="/orange">Каталог &nbsp;/</NuxtLink>
@@ -30,30 +30,31 @@
         </div>
       </div>
       <div
-        class="mt-6 flex min-h-[133px] w-full flex-col items-center justify-around rounded-3xl bg-white pb-16 pt-16"
+        class="mt-6 flex min-h-[133px] w-full flex-col items-center justify-around rounded-3xl bg-white pb-16 pt-16 md:py-5"
       >
-        <div class="w-5/6 max-w-[1433px]">
-          <div class="flex flex-row justify-start">
-            <div class="flex basis-[55%] flex-row">
+        <div class="w-5/6 max-w-[1433px] md:w-[93%]">
+          <div class="flex flex-row justify-start md:flex-col md:gap-y-2">
+            <div
+              class="flex basis-[55%] flex-row md:basis-auto md:flex-col-reverse md:gap-y-2"
+            >
               <div
-                class="-mt-4 max-h-[471px] w-[19%]"
-                style="overflow-y: scroll; overflow-x: visible"
+                class="-mt-4 max-h-[471px] w-[19%] overflow-x-visible overflow-y-scroll md:overflow-y-visible md:overflow-x-scroll"
               >
                 <img
                   v-for="pic in pictures"
                   :id="pic"
                   :key="pic.id"
-                  class="mt-4 h-[100px] w-[81%] rounded-xl border-2 border-black"
+                  class="mt-4 h-[100px] w-[81%] rounded-xl border-2 border-black md:w-full"
                   :src="pic"
                   @click.prevent="photo(pic)"
                 />
               </div>
               <div
                 :style="{ 'background-image': 'url(' + picture + ')' }"
-                class="ml-4 min-h-[471px] w-[81%] rounded-xl border-2 border-black bg-cover xl:h-[99%] lg:h-[51%]"
+                class="ml-4 min-h-[471px] w-[81%] rounded-xl border-2 border-black bg-cover xl:h-[99%] lg:h-[51%] md:ml-0 md:w-full md:bg-center"
               ></div>
             </div>
-            <div class="ml-4 flex basis-[45%] flex-col">
+            <div class="ml-4 flex basis-[45%] flex-col md:ml-0 md:basis-auto">
               <p
                 class="black text-3xl font-semibold"
                 style="white-space: nowrap"
@@ -127,21 +128,21 @@
             </div>
           </div>
           <div
-            class="mt-10 flex flex-row items-end text-4xl font-semibold text-black"
+            class="mt-10 flex flex-row items-end text-4xl font-semibold text-black md:text-2xl"
           >
             Описание
           </div>
           <div
-            class="mt-10 flex flex-row items-end text-xl font-[400] text-black"
+            class="mt-10 flex flex-row items-end text-xl font-[400] text-black md:mt-5 md:text-lg"
           >
             {{ base.description }}
           </div>
           <div
-            class="mt-10 flex flex-row items-end text-4xl font-semibold text-black"
+            class="mt-10 flex flex-row items-end text-4xl font-semibold text-black md:text-2xl"
           >
             Характеристики
           </div>
-          <div class="mt-10 flex text-3xl font-[400]">
+          <div class="mt-10 flex text-3xl font-[400] md:mt-5 md:text-lg">
             <div class="flex basis-5/6 flex-col">
               <div
                 v-for="one in name_technical_specifications"
@@ -156,7 +157,7 @@
               <div
                 v-for="two in technical_specifications"
                 :key="two.id"
-                class="ml-2 mt-[4px] text-2xl"
+                class="ml-2 mt-[4px] text-2xl md:text-lg"
               >
                 {{ two }}
               </div>
@@ -165,7 +166,7 @@
         </div>
       </div>
     </div>
-    <div class="-mt-96">
+    <div>
       <Under />
     </div>
   </section>
