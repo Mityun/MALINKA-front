@@ -14,10 +14,10 @@
                   v-for="item in hor"
                   :id="item.id + 'a'"
                   :key="item.id"
-                  class="bl md:h-34 mt-9 flex h-44 w-[96%] flex-row justify-between md:mt-5"
+                  class="bl mt-9 flex h-44 w-[96%] flex-row justify-between md:mt-5 md:h-auto md:flex-col-reverse"
                 >
                   <div
-                    class="flex basis-2/3 flex-col justify-between md:w-[calc(100%-40px)] md:basis-auto"
+                    class="flex basis-2/3 flex-col justify-between md:w-[calc(100%)] md:basis-auto"
                   >
                     <div
                       class="relative min-w-full text-3xl font-medium md:text-xl"
@@ -74,7 +74,7 @@
                     </div>
                   </div>
                   <div
-                    class="card flex basis-1/3 items-baseline justify-end rounded-2xl md:w-[40px] md:basis-auto"
+                    class="card flex basis-1/3 items-baseline justify-end rounded-2xl md:aspect-square md:min-h-[200px] md:w-full md:basis-auto"
                     :style="{
                       'background-image': 'url(' + item.main_photo_url + ')'
                     }"
