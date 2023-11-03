@@ -130,7 +130,7 @@
                 id="coupon_input"
                 type="text"
                 placeholder="промокод"
-                class="place coupon mb-[151px] mt-11 h-7 w-full rounded-full md:mb-10 md:mt-5 md:text-lg"
+                class="place coupon relative mb-[151px] mt-11 h-7 w-full rounded-full md:mb-10 md:mt-5 md:text-lg"
               />
             </div>
           </div>
@@ -142,44 +142,44 @@
         <div class="flex w-5/6 max-w-[1196px] flex-row justify-between">
           <form name="payform-tinkoff" @submit="makePayment">
             <input
-              class="payform-tinkoff-row"
+              class="payform-tinkoff-row relative"
               type="hidden"
               name="terminalkey"
               value="1693506146087"
             />
             <input
-              class="payform-tinkoff-row"
+              class="payform-tinkoff-row relative"
               type="hidden"
               name="frame"
               value="false"
             />
             <input
-              class="payform-tinkoff-row"
+              class="payform-tinkoff-row relative"
               type="hidden"
               name="language"
               value="ru"
             />
             <input
-              class="payform-tinkoff-row"
+              class="payform-tinkoff-row relative"
               type="hidden"
               name="receipt"
               value=""
             />
             <input
-              class="place mb-0 mt-1 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-1 h-7 w-full rounded-full"
               type="hidden"
               name="description"
               value="Покупка в интернет-магазине default-pi.ru"
             />
             <input
-              class="place mb-0 mt-1 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-1 h-7 w-full rounded-full"
               type="hidden"
               name="order"
             />
 
             <input
               id="order_sum"
-              class="place mb-0 mt-11 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-11 h-7 w-full rounded-full"
               type="text"
               placeholder="Сумма заказа"
               name="amount"
@@ -187,28 +187,28 @@
               readonly
             />
             <input
-              class="place mb-0 mt-3 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-3 h-7 w-full rounded-full"
               type="text"
               placeholder="ФИО плательщика"
               name="name"
               required
             />
             <input
-              class="place mb-0 mt-3 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-3 h-7 w-full rounded-full"
               type="text"
               placeholder="Адрес доставки"
               name="delivery_address"
               required
             />
             <input
-              class="place mb-0 mt-3 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-3 h-7 w-full rounded-full"
               type="text"
               placeholder="E-mail"
               name="email"
               required
             />
             <input
-              class="place mb-0 mt-3 h-7 w-full rounded-full"
+              class="place relative mb-0 mt-3 h-7 w-full rounded-full"
               type="text"
               placeholder="Контактный телефон"
               name="phone"

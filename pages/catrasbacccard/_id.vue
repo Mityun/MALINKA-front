@@ -140,7 +140,7 @@
             Характеристики
           </div>
           <div class="mt-10 flex text-3xl font-[400] md:mt-5 md:text-lg">
-            <div class="flex basis-5/6 flex-col">
+            <div class="flex basis-5/6 flex-col md:flex-grow md:basis-auto">
               <div
                 v-for="one in name_technical_specifications"
                 :key="one.id"
@@ -150,7 +150,9 @@
                 <div class="bor ml-2 w-full"></div>
               </div>
             </div>
-            <div class="flex basis-1/6 flex-col justify-start opacity-80">
+            <div
+              class="flex basis-1/6 flex-col justify-start opacity-80 md:max-w-[50%] md:flex-shrink-0 md:basis-auto"
+            >
               <div
                 v-for="two in technical_specifications"
                 :key="two.id"

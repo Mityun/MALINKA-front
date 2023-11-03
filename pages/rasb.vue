@@ -143,4 +143,46 @@ export default {
     -5px 5px 0 #bc1142,
     5px 5px 0 #bc1142;
 }
+
+@media (max-width: 991.99px) {
+  .hhh {
+    text-shadow:
+      0 -3px 0 #bc1142,
+      0 -3px 0 #bc1142,
+      0 3px 0 #bc1142,
+      0 3px 0 #bc1142,
+      0 -2px 0 #bc1142,
+      0 -2px 0 #bc1142,
+      0 2px 0 #bc1142,
+      0 2px 0 #bc1142,
+      0 -1px 0 #bc1142,
+      0 -1px 0 #bc1142,
+      0 1px 0 #bc1142,
+      0 1px 0 #bc1142,
+      -3px 0 0 #bc1142,
+      3px 0 0 #bc1142,
+      -3px 0 0 #bc1142,
+      3px 0 0 #bc1142,
+      -1px -3px 0 #bc1142,
+      1px -3px 0 #bc1142,
+      -1px 3px 0 #bc1142,
+      1px 3px 0 #bc1142,
+      -3px -1px 0 #bc1142,
+      3px -1px 0 #bc1142,
+      -3px 1px 0 #bc1142,
+      3px 1px 0 #bc1142,
+      -2px -3px 0 #bc1142,
+      2px -3px 0 #bc1142,
+      -2px 3px 0 #bc1142,
+      2px 3px 0 #bc1142,
+      -3px -2px 0 #bc1142,
+      3px -2px 0 #bc1142,
+      -3px 2px 0 #bc1142,
+      3px 2px 0 #bc1142,
+      -3px -3px 0 #bc1142,
+      3px -3px 0 #bc1142,
+      -3px 3px 0 #bc1142,
+      3px 3px 0 #bc1142;
+  }
+}
 </style>
