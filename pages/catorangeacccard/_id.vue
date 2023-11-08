@@ -143,7 +143,9 @@
             Характеристики
           </div>
           <div class="mt-10 flex text-3xl font-[400] md:mt-5 md:text-lg">
-            <div class="flex basis-5/6 flex-col md:flex-grow md:basis-auto">
+            <div
+              class="flex basis-5/6 flex-col md:hidden md:flex-grow md:basis-auto"
+            >
               <div
                 v-for="one in name_technical_specifications"
                 :key="one.id"
@@ -154,7 +156,7 @@
               </div>
             </div>
             <div
-              class="flex basis-1/6 flex-col justify-start opacity-80 md:max-w-[50%] md:flex-shrink-0 md:basis-auto"
+              class="flex basis-1/6 flex-col justify-start opacity-80 md:hidden md:max-w-[50%] md:flex-shrink-0 md:basis-auto"
             >
               <div
                 v-for="two in technical_specifications"
@@ -162,6 +164,28 @@
                 class="ml-2 mt-[4px] text-2xl md:text-lg"
               >
                 {{ two }}
+              </div>
+            </div>
+          </div>
+          <div class="hidden flex-grow flex-col gap-y-2 md:flex">
+            <div
+              v-for="(data, index) in name_technical_specifications.map(
+                (spec, idx) => ({
+                  one: spec,
+                  two: technical_specifications[idx]
+                })
+              )"
+              :key="index"
+              class="flex items-end"
+            >
+              <div class="flex-grow-0">
+                {{ data.one }}
+              </div>
+              <div class="bor mb-[4px] ml-2 flex-grow"></div>
+              <div class="flex flex-col justify-end opacity-80">
+                <div class="ml-2 mt-[4px] flex-grow-0 text-right">
+                  {{ data.two }}
+                </div>
               </div>
             </div>
           </div>

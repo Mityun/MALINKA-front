@@ -26,7 +26,9 @@
             <img src="/images/burger-icon-opened.svg" alt="" />
           </button>
           <NuxtLink to="/" class="text-nav">Главная</NuxtLink>
-          <div class="text-nav cat1 z-20 flex flex-col justify-center">
+          <div
+            class="text-nav cat1 z-20 flex flex-col justify-center md:!hidden"
+          >
             <div>Каталог</div>
             <div class="one z-10 flex flex-col bg-[#D2D2D2] duration-100">
               <NuxtLink to="/rasb" class="cat mt-[20px] md:mt-0">

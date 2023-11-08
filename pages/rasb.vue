@@ -12,7 +12,7 @@
           </div>
         </div>
         <div
-          class="lana hhh z-10 font-extrabold text-[#D2D2D2] xl:text-[255px] lg:text-[220px] md:w-full md:text-6xl"
+          class="lana hhh z-10 text-[255px] font-extrabold text-[#D2D2D2] xl:text-[220px] lg:text-6xl md:w-full"
         >
           Raspberry
           <br class="md:hidden" />
@@ -24,7 +24,7 @@
       <img
         src="@/assets/Raspberry_Pi_Logo 1.svg"
         style="position: absolute"
-        class="z-0 -mt-56 w-1/3"
+        class="z-0 -mt-56 w-1/3 md:absolute md:mt-0 md:max-w-[120px] md:-translate-y-1/2"
         alt=""
       />
     </div>
