@@ -12,7 +12,7 @@
           </div>
         </div>
         <div
-          class="lana hhh z-10 text-[255px] font-extrabold text-[#D2D2D2] xl:text-[220px] lg:text-6xl md:w-full"
+          class="lana hhh z-10 text-[255px] font-extrabold text-[#D2D2D2] xl:text-[220px] lg:text-[150px] md:w-full md:text-6xl"
         >
           Raspberry
           <br class="md:hidden" />
@@ -147,42 +147,30 @@ export default {
 @media (max-width: 991.99px) {
   .hhh {
     text-shadow:
-      0 -3px 0 #bc1142,
-      0 -3px 0 #bc1142,
-      0 3px 0 #bc1142,
-      0 3px 0 #bc1142,
       0 -2px 0 #bc1142,
-      0 -2px 0 #bc1142,
+      -2px 0 0 #bc1142,
       0 2px 0 #bc1142,
-      0 2px 0 #bc1142,
+      2px 0 0 #bc1142,
       0 -1px 0 #bc1142,
-      0 -1px 0 #bc1142,
+      -1px 0 0 #bc1142,
       0 1px 0 #bc1142,
-      0 1px 0 #bc1142,
-      -3px 0 0 #bc1142,
-      3px 0 0 #bc1142,
-      -3px 0 0 #bc1142,
-      3px 0 0 #bc1142,
-      -1px -3px 0 #bc1142,
-      1px -3px 0 #bc1142,
-      -1px 3px 0 #bc1142,
-      1px 3px 0 #bc1142,
-      -3px -1px 0 #bc1142,
-      3px -1px 0 #bc1142,
-      -3px 1px 0 #bc1142,
-      3px 1px 0 #bc1142,
-      -2px -3px 0 #bc1142,
-      2px -3px 0 #bc1142,
-      -2px 3px 0 #bc1142,
-      2px 3px 0 #bc1142,
-      -3px -2px 0 #bc1142,
-      3px -2px 0 #bc1142,
-      -3px 2px 0 #bc1142,
-      3px 2px 0 #bc1142,
-      -3px -3px 0 #bc1142,
-      3px -3px 0 #bc1142,
-      -3px 3px 0 #bc1142,
-      3px 3px 0 #bc1142;
+      1px 0 0 #bc1142,
+      -1px -1px 0 #bc1142,
+      1px 1px 0 #bc1142,
+      -1px 1px 0 #bc1142,
+      1px -1px 0 #bc1142,
+      -2px -2px 0 #bc1142,
+      2px 2px 0 #bc1142,
+      -2px 2px 0 #bc1142,
+      2px -2px 0 #bc1142,
+      -2px -1px 0 #bc1142,
+      2px 1px 0 #bc1142,
+      -2px 1px 0 #bc1142,
+      2px -1px 0 #bc1142,
+      -1px -2px 0 #bc1142,
+      1px 2px 0 #bc1142,
+      -1px 2px 0 #bc1142,
+      1px -2px 0 #bc1142;
   }
 }
 </style>
