@@ -293,7 +293,7 @@ export default {
               Number(this.hor[m].price) * Number(this.hor[m].count)
             this.len = this.len + Number(this.hor[m].count)
 
-            this.hor[m].main_photo_url = this.hor[m].photo_url.split(';')[0]
+            this.hor[m].main_photo_url = this.hor[m].photo.replace('default-pi.ru', 'default-pi.ru:1337')
 
             if (this.hor[m].discount == 0) {
               this.final_sum =
@@ -335,7 +335,7 @@ export default {
         this.len = this.len + 1
 
         item.count = Number(item.count) + 1
-        item.main_photo_url = item.photo_url.split(';')[0]
+        item.main_photo_url = item.photo.replace('default-pi.ru', 'default-pi.ru:1337')
 
         if (item.discount == 0) {
           this.final_sum = this.final_sum + Number(item.price)
@@ -360,7 +360,7 @@ export default {
         this.all_sum = this.all_sum - Number(item.price)
 
         item.count = Number(item.count) - 1
-        item.main_photo_url = item.photo_url.split(';')[0]
+        item.main_photo_url = item.photo.replace('default-pi.ru', 'default-pi.ru:1337')
         if (item.discount == 0) {
           this.final_sum = this.final_sum - Number(item.price)
         } else {
@@ -380,22 +380,25 @@ export default {
           .then(coupons => {
             console.log(coupons)
             if (coupons.length == 0) {
-              // console.log('no such coupon');
+              // Нет такого купона
               // pass
             }
-            if (coupons.length > 1) {
-              // console.log('more than one coupon');
+            else if (coupons.length > 1) {
+              // Что-то не так, несколько таких купонов
               // pass
-            } else {
+            }
+            else {
               const coupon_info = coupons[0]
 
               if (coupon_info.type == 'sum') {
                 this.final_sum -= coupon_info.discount
 
                 this.final_sum = Math.max(this.final_sum, 1)
-              } else if (coupon_info.type == 'percent') {
+              }
+              else if (coupon_info.type == 'percent') {
                 this.final_sum -= (this.final_sum * coupon_info.discount) / 100
-              } else {
+              }
+              else {
                 // console.log('error', coupon_info.type);
                 // pass
               }

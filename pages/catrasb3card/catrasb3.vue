@@ -145,7 +145,7 @@ export default {
         .then(products => {
           for (let i = 0; i < products.length; i++) {
             this.arrar.push(products[i])
-            this.arrar[i].main_photo_url = this.arrar[i].photo_url.split(';')[0]
+            this.arrar[i].main_photo_url = this.arrar[i].photo.replace('default-pi.ru', 'default-pi.ru:1337')
 
             // calculate discount and save if in priceC atrtibute
             if (products[i].discount != 0) {
