@@ -17,7 +17,13 @@
           <div class="h-full w-full p-2">
             <div
               class="h-full min-h-[322px] w-full bg-[#D9D9D9] backdrop-opacity-100"
-            ></div>
+            >
+            <img
+              src="@/assets/threerev.jpg"
+              class="h-full w-full backdrop-opacity-100"
+              alt=""
+            />
+          </div>
           </div>
           <NuxtLink to="/rasb" class="z-10">
             <div
@@ -34,7 +40,13 @@
           <div class="h-full w-full p-2">
             <div
               class="h-full min-h-[322px] w-full bg-[#D9D9D9] backdrop-opacity-100"
-            ></div>
+            >
+            <img
+              src="@/assets/tworev.jpg"
+              class="h-full w-full backdrop-opacity-100"
+              alt=""
+            />
+          </div>
           </div>
           <NuxtLink to="/orange" class="z-10">
             <div

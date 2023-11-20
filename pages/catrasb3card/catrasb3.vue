@@ -79,9 +79,9 @@
                 <div
                   class="but flex flex-row items-center justify-center rounded-full border-[2px] border-[#BC1142] bg-white pb-4 pt-4"
                 >
-                  <div class="text-xl font-semibold text-[#BC1142]">
+                  <NuxtLink class="text-xl font-semibold text-[#BC1142]" to="/bag">
                     В корзине
-                  </div>
+                  </NuxtLink>
                 </div>
               </div>
               <div

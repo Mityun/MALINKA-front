@@ -67,7 +67,12 @@
             >
               <div
                 class="h-[256px] w-[256px] rounded-full bg-[#D9D9D9] md:aspect-square md:h-auto md:w-3/4"
-              ></div>
+              >
+              <img
+              src="@/assets/onerev.jpg"
+              class="h-[256px] w-[256px] backdrop-opacity-100 rounded-full"
+              alt=""
+              /></div>
               <div class="text-2xl font-semibold md:text-lg">Дмитрий</div>
               <div class="text-center text-xl md:text-base">
                 Специалист по международной торговле,&nbsp;экономист,
@@ -79,7 +84,13 @@
             >
               <div
                 class="h-[256px] w-[256px] rounded-full bg-[#D9D9D9] md:aspect-square md:h-auto md:w-3/4"
-              ></div>
+              >
+              <img
+              src="@/assets/onerev.jpg"
+              class="h-[256px] w-[256px] backdrop-opacity-100 rounded-full"
+              alt=""
+              />
+            </div>
               <div class="text-2xl font-semibold md:text-lg">Владимир</div>
               <div class="text-center text-xl md:text-base">
                 СММ - директор, логист, ведущий программист.
