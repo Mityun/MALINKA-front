@@ -19,7 +19,7 @@
               class="h-full min-h-[322px] w-full bg-[#D9D9D9] backdrop-opacity-100"
             >
             <img
-              src="@/assets/threerev.jpg"
+              src="@/assets/raspberry_pi_background.png"
               class="h-full w-full backdrop-opacity-100"
               alt=""
             />
@@ -42,7 +42,7 @@
               class="h-full min-h-[322px] w-full bg-[#D9D9D9] backdrop-opacity-100"
             >
             <img
-              src="@/assets/tworev.jpg"
+              src="@/assets/orange_pi_background.png"
               class="h-full w-full backdrop-opacity-100"
               alt=""
             />

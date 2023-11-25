@@ -69,7 +69,7 @@
                 class="h-[256px] w-[256px] rounded-full bg-[#D9D9D9] md:aspect-square md:h-auto md:w-3/4"
               >
               <img
-              src="@/assets/onerev.jpg"
+              src="@/assets/dima_default_square.jpg"
               class="h-[256px] w-[256px] backdrop-opacity-100 rounded-full"
               alt=""
               /></div>
@@ -86,7 +86,7 @@
                 class="h-[256px] w-[256px] rounded-full bg-[#D9D9D9] md:aspect-square md:h-auto md:w-3/4"
               >
               <img
-              src="@/assets/onerev.jpg"
+              src="@/assets/vova_default_square.jpg"
               class="h-[256px] w-[256px] backdrop-opacity-100 rounded-full"
               alt=""
               />
